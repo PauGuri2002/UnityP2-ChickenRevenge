@@ -71,14 +71,24 @@ public class chickenControl : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext WASD)
     {
-        if(!movementEnabled) { return; }
-        move = WASD.ReadValue<Vector2>();
+        if (!movementEnabled)
+        {
+            move = Vector2.zero;
+            return;
+        }
+
+            move = WASD.ReadValue<Vector2>();
     }
 
     // Sprint Function
     public void OnSpeedUp(InputAction.CallbackContext theSpeed)
     {
-        if (!movementEnabled) { return; }
+        if (!movementEnabled)
+        {
+            isRunning = false;
+            return;
+        }
+
         if (theSpeed.started)
         {
             isRunning = true;
@@ -137,8 +147,7 @@ public class chickenControl : MonoBehaviour
         Vector3 horizontalMove = forward * move.y + right * move.x;
 
         Vector3 hvMove = new Vector3(horizontalMove.x * speed, verticalMove, horizontalMove.z * speed);
-        characterController.Move((hvMove * dashPlayerControll) * Time.deltaTime);
-        Debug.Log(hvMove);
+        characterController.Move((hvMove * dashPlayerControll + externalForces) * Time.deltaTime);
         if (horizontalMove.magnitude > 0) { modelKFC.transform.rotation = Quaternion.LookRotation(horizontalMove); }
 
         // reset all properties when grounded

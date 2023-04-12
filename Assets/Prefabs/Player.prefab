@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 5079174525167319530}
   - component: {fileID: 6282903418717495729}
   - component: {fileID: 5457853735503463894}
-  - component: {fileID: 8312163175610140247}
   - component: {fileID: 5079174525167319527}
   m_Layer: 0
   m_Name: Player
@@ -310,6 +309,7 @@ MonoBehaviour:
   movementEnabled: 1
   dashSpeed: 5
   dashTime: 0.2
+  dashCD: 5
   cam: {fileID: 0}
   modelKFC: {fileID: 5151934217256745421}
   _playerAnimator: {fileID: 5457853736291740609}
@@ -343,22 +343,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f914c0c7893fa6c4aa830c55e30becb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 10
-  recoverTime: 1
---- !u!136 &8312163175610140247
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7565839162051440814}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 1.3138618
-  m_Height: 3.4475002
-  m_Direction: 1
-  m_Center: {x: 0.13924336, y: -2.2710667, z: -0.052188873}
+  pushForce: 50
+  recoverTime: 0.1
 --- !u!114 &5079174525167319527
 MonoBehaviour:
   m_ObjectHideFlags: 0
