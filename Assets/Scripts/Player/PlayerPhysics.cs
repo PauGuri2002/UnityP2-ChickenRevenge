@@ -11,14 +11,12 @@ public class PlayerPhysics : MonoBehaviour
 
     private CharacterController characterController;
     private CapsuleCollider capsuleCollider;
-    private chickenControl chickenControl;
     private respawnObjects respawnObjectsScript;
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
         capsuleCollider = GetComponent<CapsuleCollider>();
-        chickenControl = GetComponent<chickenControl>();
         respawnObjectsScript = GetComponent<respawnObjects>();
 
         respawnPos = transform.position;

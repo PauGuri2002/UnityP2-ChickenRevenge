@@ -7,7 +7,7 @@ TagManager:
   - Draggable
   - Killer
   - Hitter
-  - FinalDoor
+  - Ground
   layers:
   - Default
   - TransparentFX
