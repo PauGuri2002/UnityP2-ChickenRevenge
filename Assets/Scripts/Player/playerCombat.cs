@@ -5,20 +5,29 @@ using UnityEngine.InputSystem;
 
 public class playerCombat : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Header("Egg Shoot")]
+    [SerializeField] private float shootCD = 2f;
+    [HideInInspector] public bool eggShooting = true;
+
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
-    
-    private void OnAttack(InputAction.CallbackContext theDash)
+
+    private void OnAttack(InputAction.CallbackContext theAttack)
     {
 
+    }
+
+    IEnumerator ShootingEgg()
+    {
+        eggShooting = true;
+        yield return new WaitForSeconds(shootCD);
+        eggShooting = false;
     }
 }
