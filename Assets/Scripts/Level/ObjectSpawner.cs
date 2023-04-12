@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FruitSpawner : MonoBehaviour
+public class ObjectSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] fruitPrefabs;
+    private GameObject[] objectPrefabs;
     [SerializeField]
     private Vector2 spawnerSize;
     [SerializeField]
@@ -15,8 +15,13 @@ public class FruitSpawner : MonoBehaviour
     [SerializeField]
     private int maxCount = 20;
 
-    private List<GameObject> spawnedFruit = new List<GameObject>();
+    private List<GameObject> spawnedObjects = new List<GameObject>();
     private Coroutine c;
+
+    private void Start()
+    {
+        //ActivateSpawner();
+    }
 
     public void ActivateSpawner()
     {
@@ -37,15 +42,15 @@ public class FruitSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(spawnTimeMin, spawnTimeMax));
 
-            GameObject fruit = fruitPrefabs[Random.Range(0, fruitPrefabs.Length)];
+            GameObject fruit = objectPrefabs[Random.Range(0, objectPrefabs.Length)];
             Vector3 position = transform.position + new Vector3(Random.Range(-(spawnerSize.x / 2), spawnerSize.x / 2), 0, Random.Range(-(spawnerSize.y / 2), spawnerSize.y / 2));
-            spawnedFruit.Add(Instantiate(fruit, position, Quaternion.identity));
+            spawnedObjects.Add(Instantiate(fruit, position, Quaternion.identity));
 
-            if(spawnedFruit.Count >= maxCount)
+            if(spawnedObjects.Count >= maxCount)
             {
-                GameObject oldestFruit = spawnedFruit[0];
-                spawnedFruit.Remove(oldestFruit);
-                Destroy(oldestFruit);
+                GameObject oldestObj = spawnedObjects[0];
+                spawnedObjects.Remove(oldestObj);
+                Destroy(oldestObj);
             }
         }
     }
