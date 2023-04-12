@@ -22,6 +22,8 @@ public class chickenControl : MonoBehaviour
     [Header("Dash Controls")]
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashTime;
+    [SerializeField] private float dashCD = 5f;
+    private bool dashReady = true;
     private float dashPlayerControll = 1f;
 
     [Header("Camera")]
@@ -92,18 +94,32 @@ public class chickenControl : MonoBehaviour
     {
         float timeDash = Time.time;
 
+        dashReady = false;
+
         while (Time.time < timeDash + dashTime)
         {
             dashPlayerControll = dashSpeed;
             yield return null;
+           
         }
+
         dashPlayerControll = 1;
+        yield return new WaitForSeconds(dashCD);
+        dashReady = true;
     }
     public void OnDash(InputAction.CallbackContext theDash)
     {
         if (!movementEnabled) { return; }
-        StartCoroutine(Dash());
+
+        if(dashReady == true)
+        {
+            if (theDash.started)
+            {
+                StartCoroutine(Dash());
+            }
+        }
     }
+
     void Movement()
     {
         if (characterController.enabled == false) { return; }
