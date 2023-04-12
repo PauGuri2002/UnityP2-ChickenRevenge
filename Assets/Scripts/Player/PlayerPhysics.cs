@@ -11,13 +11,11 @@ public class PlayerPhysics : MonoBehaviour
 
     private CharacterController characterController;
     private CapsuleCollider capsuleCollider;
-    private respawnObjects respawnObjectsScript;
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
         capsuleCollider = GetComponent<CapsuleCollider>();
-        respawnObjectsScript = GetComponent<respawnObjects>();
 
         respawnPos = transform.position;
     }
@@ -66,7 +64,6 @@ public class PlayerPhysics : MonoBehaviour
         characterController.enabled = false;
         transform.position = respawnPos;
         characterController.enabled = true;
-        respawnObjectsScript.ResetTransform();
     }
 
     public void GetHit(Vector3 hitForce, Vector3 hitPoint)
