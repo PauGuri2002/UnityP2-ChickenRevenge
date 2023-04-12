@@ -12,6 +12,7 @@ public class chickenControl : MonoBehaviour
     private float speed;
 
     private float verticalMove;
+    public Vector3 externalForces;
 
     private Vector2 move = new Vector2(0, 0);
 
@@ -20,7 +21,7 @@ public class chickenControl : MonoBehaviour
     [Header("Dash Controls")]
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashTime;
-    public float dashPlayerControll;
+    private float dashPlayerControll;
 
     [Header("Camera")]
     [SerializeField] private GameObject cam;
@@ -39,8 +40,6 @@ public class chickenControl : MonoBehaviour
         speed = walkSpeed;
 
     }
-
-    
 
     void Update()
     {
@@ -64,7 +63,7 @@ public class chickenControl : MonoBehaviour
             {
                 speed = walkSpeed;
             }
-        }
+        }        
     }
 
     public void OnMove(InputAction.CallbackContext WASD)
@@ -118,7 +117,7 @@ public class chickenControl : MonoBehaviour
         Vector3 horizontalMove = forward * move.y + right * move.x;
 
         Vector3 hvMove = new Vector3(horizontalMove.x * speed, verticalMove, horizontalMove.z * speed);
-        characterController.Move((hvMove * dashPlayerControll) * Time.deltaTime);
+        characterController.Move((hvMove * dashPlayerControll + externalForces) * Time.deltaTime);
         //Debug.Log(hvMove);
         if (horizontalMove.magnitude > 0) { modelKFC.transform.rotation = Quaternion.LookRotation(horizontalMove); }
 
