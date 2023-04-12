@@ -13,14 +13,15 @@ public class HitterHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        PlayerPhysics pp = collision.gameObject.GetComponent<PlayerPhysics>();
+        PlayerDamage pd = collision.gameObject.GetComponent<PlayerDamage>();
         
-        if (pp != null)
+        if (pd != null)
         {
             for(int i = 0; i < collision.contactCount; i++)
             {
+                Debug.Log("AH");
                 ContactPoint point = collision.GetContact(i);
-                pp.GetHit(rb.GetPointVelocity(point.point) * pushForce, point.point);
+                pd.GetHit(rb.GetPointVelocity(point.point) * pushForce);
             }
         }
     }

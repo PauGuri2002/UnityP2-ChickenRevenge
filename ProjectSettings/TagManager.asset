@@ -4,10 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Draggable
-  - Killer
-  - Hitter
   - Ground
+  - Hitter
   layers:
   - Default
   - TransparentFX
