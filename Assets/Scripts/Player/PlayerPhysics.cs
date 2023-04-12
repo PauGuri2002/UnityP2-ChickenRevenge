@@ -41,18 +41,11 @@ public class PlayerPhysics : MonoBehaviour
         {
             Die();
         }
-        if (other.gameObject.CompareTag("FinalDoor"))
-        {
-            this.chickenControl.SetOpenDoorAvailability(true);
-        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("FinalDoor"))
-        {
-            this.chickenControl.SetOpenDoorAvailability(false);
-        }
+
     }
 
     public void SetRespawnPoint(Vector3 pos)
