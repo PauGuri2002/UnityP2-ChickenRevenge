@@ -17,6 +17,7 @@ public class PlayerDamage : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         chickenControl = GetComponent<chickenControl>();
 
+        chickenControl.externalForces = Vector3.zero;
         respawnPos = transform.position;
     }
 
@@ -26,15 +27,10 @@ public class PlayerDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("collided");
         if (collision.gameObject.CompareTag("Hitter"))
         {
-            //for (int i = 0; i < collision.contactCount; i++)
-            //{
-                Debug.Log("AH");
-            //ContactPoint point = collision.GetContact(i);
-            GetHit(Vector3.Normalize(transform.position - collision.transform.position) * 500f);
-            //}
+            Vector3 force = transform.position - collision.transform.position;
+            GetHit(Vector3.Normalize(new Vector3(force.x, 0, force.z)) * pushForce);
         }
     }
 
@@ -53,25 +49,17 @@ public class PlayerDamage : MonoBehaviour
         {
             ragdollCoroutine = StartCoroutine(HandleRagdoll(hitForce));
         }
-        else
-        {
-            HandleHit(hitForce);
-        }
     }
 
     IEnumerator HandleRagdoll(Vector3 hitForce)
     {
         chickenControl.movementEnabled = false;
-        HandleHit(hitForce);
+        chickenControl.externalForces = hitForce;
 
         yield return new WaitForSeconds(recoverTime);
+        chickenControl.externalForces = Vector3.zero;
 
         chickenControl.movementEnabled = true;
         ragdollCoroutine = null;
-    }
-
-    private void HandleHit(Vector3 hitForce)
-    {
-        chickenControl.externalForces = (hitForce * Time.deltaTime);
     }
 }
