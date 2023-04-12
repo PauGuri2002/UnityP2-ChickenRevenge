@@ -1,20 +1,15 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class chickenControl : MonoBehaviour
 {
+    [Header("Player Physics Parameters")]
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float runSpeed = 10f;
     [SerializeField] private float gravity = 9.81f;
 
-    [SerializeField] private GameObject cam;
-
-    [SerializeField]
-    private Animator _playerAnimator;
-
-    CharacterController characterController;
-
-    public float speed;
+    private float speed;
 
     private float verticalMove;
 
@@ -22,7 +17,19 @@ public class chickenControl : MonoBehaviour
 
     private bool isRunning;
 
+    [Header("Dash Controls")]
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashTime;
+    public float dashPlayerControll;
+
+    [Header("Camera")]
+    [SerializeField] private GameObject cam;
     [SerializeField] private GameObject modelKFC;
+
+    [Header("Player Animator")]
+    [SerializeField] private Animator _playerAnimator;
+
+    CharacterController characterController;
 
     void Start()
     {
@@ -30,7 +37,10 @@ public class chickenControl : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         speed = walkSpeed;
+
     }
+
+    
 
     void Update()
     {
@@ -75,11 +85,22 @@ public class chickenControl : MonoBehaviour
             isRunning = false;
         }
     }
-    public void OnDash(InputAction.CallbackContext theJump)
-    {
-        // code dash
-    }
 
+    IEnumerator Dash()
+    {
+        float timeDash = Time.time;
+
+        while (Time.time < timeDash + dashTime)
+        {
+            dashPlayerControll = dashSpeed;
+            yield return null;
+        }
+        dashPlayerControll = 1;
+    }
+    public void OnDash(InputAction.CallbackContext theDash)
+    {
+        StartCoroutine(Dash());
+    }
     void Movement()
     {
         if (characterController.enabled == false) { return; }
@@ -97,8 +118,8 @@ public class chickenControl : MonoBehaviour
         Vector3 horizontalMove = forward * move.y + right * move.x;
 
         Vector3 hvMove = new Vector3(horizontalMove.x * speed, verticalMove, horizontalMove.z * speed);
-        characterController.Move(hvMove * Time.deltaTime);
-
+        characterController.Move((hvMove * dashPlayerControll) * Time.deltaTime);
+        //Debug.Log(hvMove);
         if (horizontalMove.magnitude > 0) { modelKFC.transform.rotation = Quaternion.LookRotation(horizontalMove); }
 
         // reset all properties when grounded
