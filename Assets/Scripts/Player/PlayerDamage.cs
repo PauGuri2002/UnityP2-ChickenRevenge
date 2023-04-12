@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerDamage : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class PlayerDamage : MonoBehaviour
     private Vector3 respawnPos;
 
     private CharacterController characterController;
-    private CapsuleCollider capsuleCollider;
+    private PlayerInput playerInput;
+    private chickenControl chickenControl;
 
     private void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
         characterController = GetComponent<CharacterController>();
-        capsuleCollider = GetComponent<CapsuleCollider>();
+        chickenControl = GetComponent<chickenControl>();
 
         respawnPos = transform.position;
     }
@@ -60,17 +63,17 @@ public class PlayerDamage : MonoBehaviour
 
     IEnumerator HandleRagdoll(Vector3 hitForce)
     {
-        characterController.enabled = false;
+        chickenControl.movementEnabled = false;
         HandleHit(hitForce);
 
         yield return new WaitForSeconds(recoverTime);
 
-        characterController.enabled = true;
+        chickenControl.movementEnabled = true;
         ragdollCoroutine = null;
     }
 
     private void HandleHit(Vector3 hitForce)
     {
-        characterController.AddForce(hitForce * Time.deltaTime);
+        chickenControl.externalForce = (hitForce * Time.deltaTime);
     }
 }
