@@ -128,19 +128,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5079174525167319530}
         m_TargetAssemblyTypeName: chickenControl, Assembly-CSharp
-        m_MethodName: OnJump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5079174525167319527}
-        m_TargetAssemblyTypeName: PlayerAnimatorController, Assembly-CSharp
-        m_MethodName: OnJump
+        m_MethodName: OnDash
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -318,10 +306,13 @@ MonoBehaviour:
   walkSpeed: 7
   runSpeed: 13
   gravity: 15
+  externalForces: {x: 0, y: 0, z: 0}
+  movementEnabled: 1
+  dashSpeed: 5
+  dashTime: 0.2
   cam: {fileID: 0}
-  _playerAnimator: {fileID: 5457853736291740609}
-  speed: 0
   modelKFC: {fileID: 5151934217256745421}
+  _playerAnimator: {fileID: 5457853736291740609}
 --- !u!114 &6282903418717495729
 MonoBehaviour:
   m_ObjectHideFlags: 0

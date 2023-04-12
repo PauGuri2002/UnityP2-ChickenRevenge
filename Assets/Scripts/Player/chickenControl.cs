@@ -12,16 +12,17 @@ public class chickenControl : MonoBehaviour
     private float speed;
 
     private float verticalMove;
-    public Vector3 externalForces;
+    [HideInInspector] public Vector3 externalForces = Vector3.zero;
 
     private Vector2 move = new Vector2(0, 0);
 
     private bool isRunning;
+    [HideInInspector] public bool movementEnabled = true;
 
     [Header("Dash Controls")]
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashTime;
-    private float dashPlayerControll;
+    private float dashPlayerControll = 1f;
 
     [Header("Camera")]
     [SerializeField] private GameObject cam;
@@ -68,12 +69,14 @@ public class chickenControl : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext WASD)
     {
+        if(!movementEnabled) { return; }
         move = WASD.ReadValue<Vector2>();
     }
 
     // Sprint Function
     public void OnSpeedUp(InputAction.CallbackContext theSpeed)
     {
+        if (!movementEnabled) { return; }
         if (theSpeed.started)
         {
             isRunning = true;
@@ -98,6 +101,7 @@ public class chickenControl : MonoBehaviour
     }
     public void OnDash(InputAction.CallbackContext theDash)
     {
+        if (!movementEnabled) { return; }
         StartCoroutine(Dash());
     }
     void Movement()
@@ -117,8 +121,8 @@ public class chickenControl : MonoBehaviour
         Vector3 horizontalMove = forward * move.y + right * move.x;
 
         Vector3 hvMove = new Vector3(horizontalMove.x * speed, verticalMove, horizontalMove.z * speed);
-        characterController.Move((hvMove * dashPlayerControll + externalForces) * Time.deltaTime);
-        //Debug.Log(hvMove);
+        characterController.Move((hvMove * dashPlayerControll) * Time.deltaTime);
+        Debug.Log(hvMove);
         if (horizontalMove.magnitude > 0) { modelKFC.transform.rotation = Quaternion.LookRotation(horizontalMove); }
 
         // reset all properties when grounded

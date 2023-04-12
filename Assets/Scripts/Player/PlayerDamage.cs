@@ -10,12 +10,10 @@ public class PlayerDamage : MonoBehaviour
     private Vector3 respawnPos;
 
     private CharacterController characterController;
-    private PlayerInput playerInput;
     private chickenControl chickenControl;
 
     private void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
         characterController = GetComponent<CharacterController>();
         chickenControl = GetComponent<chickenControl>();
 
@@ -74,6 +72,6 @@ public class PlayerDamage : MonoBehaviour
 
     private void HandleHit(Vector3 hitForce)
     {
-        chickenControl.externalForce = (hitForce * Time.deltaTime);
+        chickenControl.externalForces = (hitForce * Time.deltaTime);
     }
 }
