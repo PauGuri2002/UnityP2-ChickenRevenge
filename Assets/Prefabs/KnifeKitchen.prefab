@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7799034839348231537}
   - component: {fileID: 7009663051301660379}
   - component: {fileID: 1552555340508604570}
+  - component: {fileID: 5361642404452414042}
   m_Layer: 0
   m_Name: KnifeKitchen
   m_TagString: Hitter
@@ -128,3 +129,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &5361642404452414042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7799034839344931199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9702f58f3765548ab01a56e151dc78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

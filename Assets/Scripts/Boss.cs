@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : MonoBehaviour
+public class Boss : AbstractHealth
 {
     [HideInInspector] public float health;
     [SerializeField] private float startHealth;
@@ -23,14 +23,13 @@ public class Boss : MonoBehaviour
         
     }
 
-    public void GetHit(float damage)
+    public void TakeDamage(int damage)
     {
-        health -= damage;
-
+        base.TakeDamage(damage);
         int i = 0;
         foreach (float healthPercent in phasesHealthPercent)
         {
-            if(startHealth*healthPercent <= health && currentPhase != i)
+            if (startHealth * healthPercent <= health && currentPhase != i)
             {
                 currentPhase = i;
                 StartPhase();

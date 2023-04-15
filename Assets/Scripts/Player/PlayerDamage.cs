@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerDamage : MonoBehaviour
+public class PlayerDamage : AbstractHealth
 {
     [SerializeField] private float pushForce = 10f;
     [SerializeField] private float recoverTime = 2f;
@@ -14,6 +14,7 @@ public class PlayerDamage : MonoBehaviour
 
     private void Start()
     {
+        base.SetBaseHealth();
         characterController = GetComponent<CharacterController>();
         chickenControl = GetComponent<chickenControl>();
 
