@@ -20,6 +20,8 @@ public class CamMovement : MonoBehaviour
     private float rotationSens = 5f, ZoomSens = 20f, firstPersonHeight = 1f;
     [SerializeField]
     private GameObject playerRenderer;
+    [SerializeField]
+    public Transform target;
 
     void Start()
     {
@@ -33,6 +35,11 @@ public class CamMovement : MonoBehaviour
 
     void Update()
     {
+
+        // Same as above, but setting the worldUp parameter to Vector3.left in this example turns the camera on its side
+        transform.LookAt(target, Vector3.up);
+        
+
         camRotator.rotation = Quaternion.identity;
 
 
