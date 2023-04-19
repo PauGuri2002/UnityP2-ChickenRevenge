@@ -33,6 +33,8 @@ public class AbstractHealth : MonoBehaviour, IHealth
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
-        _healthBar.GetComponent<HealthBar>().SetHealth(_currentHealth);
+        if(_healthBar != null) { _healthBar.GetComponent<HealthBar>().SetHealth(_currentHealth); }
+
+        Debug.Log(_currentHealth);
     }
 }

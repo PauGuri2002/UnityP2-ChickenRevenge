@@ -9,6 +9,8 @@ public class playerCombat : MonoBehaviour
     [SerializeField] private float shootCD = 2f;
     [HideInInspector] public bool eggShooting = true;
 
+    [SerializeField] Raycast raycastScript;
+
     void Start()
     {
 
@@ -19,8 +21,14 @@ public class playerCombat : MonoBehaviour
 
     }
 
-    private void OnAttack(InputAction.CallbackContext theAttack)
+    public void OnAttack(InputAction.CallbackContext theAttack)
     {
+
+        if (theAttack.started) 
+        { 
+            Debug.Log("Button Action Enter"); 
+            raycastScript.RaycastDMG(); 
+        }
 
     }
 
