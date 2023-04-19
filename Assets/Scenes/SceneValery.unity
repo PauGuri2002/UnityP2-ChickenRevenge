@@ -255,6 +255,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 338325225}
     - target: {fileID: 8820146201079246367, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 338325229}
+    - target: {fileID: 8820146201079246367, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnDash
       objectReference: {fileID: 0}
@@ -298,6 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootCD: 2
   eggShooting: 0
+  raycastScript: {fileID: 1280650145}
 --- !u!1 &371869639
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +317,7 @@ GameObject:
   - component: {fileID: 371869642}
   - component: {fileID: 371869641}
   - component: {fileID: 371869640}
+  - component: {fileID: 371869646}
   m_Layer: 0
   m_Name: Sauce
   m_TagString: Respawn
@@ -407,6 +413,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -48.858, z: 0}
+--- !u!114 &371869646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371869639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada7a1ce363b28343af8ad0e3356c021, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthBar: {fileID: 0}
+  _baseHealth: 100
+  _minHealth: 0
+  health: 0
+  startHealth: 100
+  phasesHealthPercent: []
+  knifeSpawner: {fileID: 0}
 --- !u!1 &822507473
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,18 +576,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8461398565896352864, guid: 025877399fd165b448fd7b1d947755de, type: 3}
   m_PrefabInstance: {fileID: 1504219060}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1280650138 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7887882441691795610, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
+--- !u!114 &1280650145 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5087707861996586317, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
   m_PrefabInstance: {fileID: 277210324}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1280650140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280650138}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e113296353c7124381a2c4c35660f94, type: 3}
