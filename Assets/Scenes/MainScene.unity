@@ -2542,7 +2542,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eae11ef8205070f48bc7c4fc0fa93879, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 75cc271b07d9977459659d63df3c164f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2738,7 +2738,7 @@ GameObject:
   - component: {fileID: 2111602212}
   - component: {fileID: 2111602211}
   m_Layer: 5
-  m_Name: Heart
+  m_Name: Chicken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2753,7 +2753,7 @@ RectTransform:
   m_GameObject: {fileID: 2111602209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3536, y: 1.3536, z: 1.3536}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 743359437}
@@ -2761,7 +2761,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.84544}
+  m_AnchoredPosition: {x: 18, y: 12}
   m_SizeDelta: {x: 65.5097, y: 65.5097}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2111602211
@@ -2784,7 +2784,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 80dfdeab657b7ff48bcb2526d01364de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c8892f409d4806c4ea3b9bae5685c998, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
