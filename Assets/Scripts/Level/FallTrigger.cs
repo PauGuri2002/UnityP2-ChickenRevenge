@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FallTrigger : MonoBehaviour
@@ -14,7 +12,7 @@ public class FallTrigger : MonoBehaviour
             other.transform.position = respawnPos;
             other.GetComponent<CharacterController>().enabled = true;
 
-            other.GetComponent<IHealth>().TakeDamage(10);
+            other.GetComponent<IHealth>().TakeDamage(10, null);
         }
     }
 }

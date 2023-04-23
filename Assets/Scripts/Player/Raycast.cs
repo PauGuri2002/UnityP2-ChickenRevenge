@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Raycast : MonoBehaviour
@@ -22,8 +20,8 @@ public class Raycast : MonoBehaviour
     public void RaycastDMG()
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out RaycastHit hitinfo, 20f))
-        {   
-            hitinfo.collider.gameObject.GetComponent<IHealth>().TakeDamage(10);
+        {
+            hitinfo.collider.gameObject.GetComponent<IHealth>().TakeDamage(10, gameObject);
         }
 
     }

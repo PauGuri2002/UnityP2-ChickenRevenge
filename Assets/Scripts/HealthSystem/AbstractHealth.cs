@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AbstractHealth : MonoBehaviour, IHealth
@@ -21,20 +19,30 @@ public class AbstractHealth : MonoBehaviour, IHealth
     public int GetCurrentHealth()
     {
         return _currentHealth;
-    } 
+    }
 
-    
+
     public void SetBaseHealth()
     {
         _currentHealth = _baseHealth;
         _healthBar.GetComponent<HealthBar>().SetBaseHealth(_baseHealth);
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage, GameObject origin)
     {
         _currentHealth -= damage;
-        if(_healthBar != null) { _healthBar.GetComponent<HealthBar>().SetHealth(_currentHealth); }
+        if (_healthBar != null) { _healthBar.GetComponent<HealthBar>().SetHealth(_currentHealth); }
 
-        Debug.Log(_currentHealth);
+        Debug.Log(gameObject.name + " health: " + _currentHealth);
+
+        if (_currentHealth <= _minHealth)
+        {
+            Die();
+        }
+    }
+
+    public virtual void Die()
+    {
+        Debug.Log(gameObject.name + " died");
     }
 }

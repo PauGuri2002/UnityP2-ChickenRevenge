@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss : AbstractHealth
 {
-    [HideInInspector] public float health;
-    [SerializeField] private float startHealth;
     [SerializeField] private float[] phasesHealthPercent;
     private int currentPhase = 0;
 
@@ -14,22 +10,23 @@ public class Boss : AbstractHealth
     // Start is called before the first frame update
     void Start()
     {
-        StartPhase(); 
+        StartPhase();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage, GameObject origin)
     {
-        base.TakeDamage(damage);
+        base.TakeDamage(damage, origin);
+
         int i = 0;
         foreach (float healthPercent in phasesHealthPercent)
         {
-            if (startHealth * healthPercent <= health && currentPhase != i)
+            if (GetBaseHealth() * healthPercent <= GetCurrentHealth() && currentPhase != i)
             {
                 currentPhase = i;
                 StartPhase();

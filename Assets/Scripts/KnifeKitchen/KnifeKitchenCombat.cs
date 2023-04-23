@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class KnifeKitchenCombat : MonoBehaviour
@@ -9,13 +7,13 @@ public class KnifeKitchenCombat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
@@ -23,11 +21,11 @@ public class KnifeKitchenCombat : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameObject test = other.transform.gameObject;
-            IHealth targetHealth = test.GetComponent<IHealth>();
+            GameObject target = other.transform.gameObject;
+            IHealth targetHealth = target.GetComponent<IHealth>();
             if (targetHealth != null)
             {
-                targetHealth.TakeDamage(this.hitDamage);
+                targetHealth.TakeDamage(hitDamage, gameObject);
             }
         }
     }

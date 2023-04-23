@@ -66,7 +66,7 @@ public class chickenControl : MonoBehaviour
             {
                 speed = walkSpeed;
             }
-        }        
+        }
     }
 
     public void OnMove(InputAction.CallbackContext WASD)
@@ -77,7 +77,8 @@ public class chickenControl : MonoBehaviour
             return;
         }
 
-            move = WASD.ReadValue<Vector2>();
+        move = WASD.ReadValue<Vector2>();
+        _playerAnimator.SetBool("moving", move.magnitude > 0);
     }
 
     // Sprint Function
@@ -85,17 +86,20 @@ public class chickenControl : MonoBehaviour
     {
         if (!movementEnabled)
         {
+            _playerAnimator.SetFloat("Walk/Run", 0);
             isRunning = false;
             return;
         }
 
         if (theSpeed.started)
         {
+            _playerAnimator.SetFloat("Walk/Run", 1);
             isRunning = true;
         }
 
         if (theSpeed.canceled)
         {
+            _playerAnimator.SetFloat("Walk/Run", 0);
             isRunning = false;
         }
     }
@@ -110,7 +114,7 @@ public class chickenControl : MonoBehaviour
         {
             dashPlayerControll = dashSpeed;
             yield return null;
-           
+
         }
 
         dashPlayerControll = 1;
@@ -121,10 +125,11 @@ public class chickenControl : MonoBehaviour
     {
         if (!movementEnabled) { return; }
 
-        if(dashReady == true)
+        if (dashReady == true)
         {
             if (theDash.started)
             {
+                _playerAnimator.SetTrigger("dash");
                 StartCoroutine(Dash());
             }
         }
@@ -155,10 +160,5 @@ public class chickenControl : MonoBehaviour
         {
             verticalMove = 0;
         }
-    }
-
-    public void Flying(bool value)
-    {
-        _playerAnimator.SetBool("flying", value);
     }
 }

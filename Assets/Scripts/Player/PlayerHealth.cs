@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class PlayerDamage : AbstractHealth
+public class PlayerHealth : AbstractHealth
 {
+    [Header("Damage parameters")]
     [SerializeField] private float pushForce = 10f;
     [SerializeField] private float recoverTime = 2f;
 
@@ -26,18 +26,22 @@ public class PlayerDamage : AbstractHealth
 
     Coroutine ragdollCoroutine;
 
-    private void OnTriggerEnter(Collider collision)
+    public override void TakeDamage(int damage, GameObject origin)
     {
-        if (collision.gameObject.CompareTag("Hitter"))
+        base.TakeDamage(damage, origin);
+
+        if (origin != null)
         {
-            Vector3 force = transform.position - collision.transform.position;
+            Vector3 force = transform.position - origin.transform.position;
             GetHit(Vector3.Normalize(new Vector3(force.x, 0, force.z)) * pushForce);
         }
+
     }
 
-    public void Die()
+    public override void Die()
     {
-        Debug.Log("You died");
+        base.Die();
+
         characterController.enabled = false;
         transform.position = respawnPos;
         characterController.enabled = true;
