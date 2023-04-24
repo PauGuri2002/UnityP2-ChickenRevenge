@@ -24,15 +24,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ToggleCamera",
-                    "type": "Button",
-                    "id": "3888f6ef-aa30-49d2-9043-2970c5d12ad5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "1723a59d-7ac6-4ebb-8b80-95202e77515e",
@@ -164,28 +155,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f119ea7c-8b8a-4184-a16a-851cff81ec48",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard+Mouse",
-                    "action": "ToggleCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "17fabc3a-f417-4cc1-a179-3adfb73d5ea9",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "ToggleCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

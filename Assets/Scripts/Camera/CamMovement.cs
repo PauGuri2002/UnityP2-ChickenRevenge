@@ -10,7 +10,7 @@ public class CamMovement : MonoBehaviour
     private Transform camRotator;
 
     Vector3 position;
-    private bool thirdperson = false;
+    private bool thirdperson = true;
     private Vector2 LookPos;
     private float Xrotation = 0f, Zoom = 0f, Yrotation=0f;
     private Vector3 LastPosition = new Vector3(0,0,0);
@@ -26,11 +26,16 @@ public class CamMovement : MonoBehaviour
     void Start()
     {
         LastPosition = camRotator.position;
-        if (!thirdperson)
-        {
-            playerRenderer.SetActive(false);
-        }
+        //if (!thirdperson)
+        //{
+        //    playerRenderer.SetActive(false);
+        //}
         CamParent = cam.transform.parent.gameObject;
+
+        position = new Vector3(camRotator.position.x, camRotator.position.y + 5, camRotator.position.z - 10);
+        playerRenderer.SetActive(true);
+
+        CamParent.transform.position = position;
     }
 
     void Update()
@@ -88,26 +93,22 @@ public class CamMovement : MonoBehaviour
         LookPos = context.ReadValue<Vector2>();
     }
 
-    public void OnToggleCamera(InputAction.CallbackContext context)
-    {
-        if(context.performed || context.canceled) { return; }
+    //public void OnToggleCamera(InputAction.CallbackContext context)
+    //{
+    //    if(context.performed || context.canceled) { return; }
         
-        thirdperson = thirdperson ? false : true;
+    //    thirdperson = thirdperson ? false : true;
 
-        if (thirdperson == false)
-        {
-            position = new Vector3(camRotator.position.x, camRotator.position.y + firstPersonHeight, camRotator.position.z);
-            playerRenderer.SetActive(false);
-        }
-        else
-        {
+    //    if (thirdperson == false)
+    //    {
+    //        position = new Vector3(camRotator.position.x, camRotator.position.y + firstPersonHeight, camRotator.position.z);
+    //        playerRenderer.SetActive(false);
+    //    }
+    //    else
+    //    {
 
-            position = new Vector3(camRotator.position.x, camRotator.position.y + 5, camRotator.position.z - 10);
-            playerRenderer.SetActive(true);
-
-        }
-        CamParent.transform.position = position;
-    }
+           
+    //}
     public void OnZoom(InputAction.CallbackContext context)
     {
         Zoom = context.ReadValue<Vector2>().y;

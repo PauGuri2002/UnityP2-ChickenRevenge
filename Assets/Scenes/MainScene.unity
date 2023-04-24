@@ -157,7 +157,7 @@ MonoBehaviour:
   spawnerSize: {x: 41.24, y: 79.5}
   spawnTimeMin: 0.5
   spawnTimeMax: 1
-  maxCount: 15
+  maxCount: 5
   followPlayer: 1
 --- !u!4 &450980887
 Transform:
