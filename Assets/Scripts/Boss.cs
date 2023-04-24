@@ -38,7 +38,7 @@ public class Boss : AbstractHealth
 
     void StartPhase()
     {
-        Debug.Log("Boss is starting phase " + currentPhase + 1);
+        Debug.Log("Boss is starting phase " + (currentPhase + 1));
         switch (currentPhase)
         {
             case 0:
