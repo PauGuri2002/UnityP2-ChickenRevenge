@@ -86,20 +86,20 @@ public class chickenControl : MonoBehaviour
     {
         if (!movementEnabled)
         {
-            _playerAnimator.SetFloat("Walk/Run", 0);
+            _playerAnimator.SetFloat("walk/run", 0);
             isRunning = false;
             return;
         }
 
         if (theSpeed.started)
         {
-            _playerAnimator.SetFloat("Walk/Run", 1);
+            _playerAnimator.SetFloat("walk/run", 1);
             isRunning = true;
         }
 
         if (theSpeed.canceled)
         {
-            _playerAnimator.SetFloat("Walk/Run", 0);
+            _playerAnimator.SetFloat("walk/run", 0);
             isRunning = false;
         }
     }

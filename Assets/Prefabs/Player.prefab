@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 5079174525167319530}
   - component: {fileID: 6282903418717495729}
   - component: {fileID: 5457853735503463894}
-  - component: {fileID: 5079174525167319527}
   - component: {fileID: 8813540242839300041}
   m_Layer: 0
   m_Name: Player
@@ -110,7 +109,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5079174525167319527}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerAnimatorController, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -174,7 +173,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5079174525167319527}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerAnimatorController, Assembly-CSharp
         m_MethodName: OnSpeedUp
         m_Mode: 0
@@ -350,18 +349,6 @@ MonoBehaviour:
   _minHealth: 0
   pushForce: 50
   recoverTime: 0.1
---- !u!114 &5079174525167319527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7565839162051440814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab664198b3e9824683754310f59b382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8813540242839300041
 MonoBehaviour:
   m_ObjectHideFlags: 0
