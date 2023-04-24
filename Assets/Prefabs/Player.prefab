@@ -1035,6 +1035,8 @@ MonoBehaviour:
   dmgRaycastDone: 0
   laserRange: 50
   laserDuration: 0.05
+  timeFire: 5
+  fireRate: 10
 --- !u!120 &7608564694109706151
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1100,7 +1102,7 @@ LineRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 0, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
