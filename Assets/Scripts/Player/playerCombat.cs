@@ -5,11 +5,17 @@ using UnityEngine.InputSystem;
 
 public class playerCombat : MonoBehaviour
 {
+    private int currentWeapon = 0;
+
     [Header("Egg Shoot")]
     [SerializeField] private float shootCD = 2f;
     [HideInInspector] public bool eggShooting = true;
 
+    [Header("Laser")]
     [SerializeField] Raycast raycastScript;
+
+    [Header("Melee")]
+    [SerializeField] private float meleeDamage = 10f;
 
     void Start()
     {
@@ -29,6 +35,11 @@ public class playerCombat : MonoBehaviour
             Debug.Log("Button Action Enter"); 
             raycastScript.RaycastDMG(); 
         }
+
+    }
+
+    public void OnChangeWeapon(InputAction.CallbackContext context)
+    {
 
     }
 

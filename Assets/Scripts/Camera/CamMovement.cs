@@ -10,14 +10,13 @@ public class CamMovement : MonoBehaviour
     private Transform camRotator;
 
     Vector3 position;
-    private bool thirdperson = true;
     private Vector2 LookPos;
-    private float Xrotation = 0f, Zoom = 0f, Yrotation=0f;
+    private float Xrotation = 0f;
     private Vector3 LastPosition = new Vector3(0,0,0);
     private Vector3 difference = new Vector3(0,0,0);
 
     [SerializeField]
-    private float rotationSens = 5f, ZoomSens = 20f, firstPersonHeight = 1f;
+    private float rotationSens = 5f;
     [SerializeField]
     private GameObject playerRenderer;
     [SerializeField]
@@ -58,34 +57,16 @@ public class CamMovement : MonoBehaviour
 
     void LookAround()
     {
-
-        if (thirdperson)
-        {
-            Xrotation = LookPos.x * rotationSens * Time.deltaTime;
-            Zoom = Zoom * ZoomSens * Time.deltaTime;
+        Xrotation = LookPos.x * rotationSens * Time.deltaTime;
           
-            if (Mathf.Abs(LookPos.x) > 0)
-            {
-                CamParent.transform.RotateAround(transform.position, Vector3.up, Xrotation);
-                CamParent.transform.rotation = Quaternion.identity;
-
-            }
-
-            Camera.main.fieldOfView -= Zoom;
-            Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 30, 120);
-
-            cam.transform.LookAt(transform.position);
-        }
-        else
+        if (Mathf.Abs(LookPos.x) > 0)
         {
-            Camera.main.fieldOfView = 90;
+            CamParent.transform.RotateAround(transform.position, Vector3.up, Xrotation);
+            CamParent.transform.rotation = Quaternion.identity;
 
-            Xrotation += -LookPos.y * rotationSens * Time.deltaTime;
-            Xrotation = Mathf.Clamp(Xrotation, -80f, 80f);
-            Yrotation += LookPos.x * rotationSens * Time.deltaTime;
-            CamParent.transform.position = new Vector3(camRotator.position.x, camRotator.position.y + firstPersonHeight, camRotator.position.z);
-            cam.transform.rotation = Quaternion.Euler(Xrotation, Yrotation, 0);
         }
+
+        cam.transform.LookAt(transform.position);
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -109,8 +90,4 @@ public class CamMovement : MonoBehaviour
 
            
     //}
-    public void OnZoom(InputAction.CallbackContext context)
-    {
-        Zoom = context.ReadValue<Vector2>().y;
-    }
 }

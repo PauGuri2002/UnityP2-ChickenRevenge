@@ -739,18 +739,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerAnimatorController, Assembly-CSharp
-        m_MethodName: OnMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: 45224857-c8fc-4fa0-94ca-876882421cd3
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
@@ -777,18 +765,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5079174525167319530}
         m_TargetAssemblyTypeName: chickenControl, Assembly-CSharp
-        m_MethodName: OnSpeedUp
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerAnimatorController, Assembly-CSharp
         m_MethodName: OnSpeedUp
         m_Mode: 0
         m_Arguments:
@@ -851,9 +827,9 @@ MonoBehaviour:
     m_ActionName: UI/RightClick[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6282903418717495729}
-        m_TargetAssemblyTypeName: CamMovement, Assembly-CSharp
-        m_MethodName: OnZoom
+      - m_Target: {fileID: 8813540242839300041}
+        m_TargetAssemblyTypeName: playerCombat, Assembly-CSharp
+        m_MethodName: OnChangeWeapon
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -942,8 +918,6 @@ MonoBehaviour:
   cam: {fileID: 0}
   camRotator: {fileID: 2541617839210178612}
   rotationSens: 20
-  ZoomSens: 10
-  firstPersonHeight: 0.2
   playerRenderer: {fileID: 5151934217256745421}
   target: {fileID: 0}
 --- !u!114 &5457853735503463894
@@ -978,6 +952,7 @@ MonoBehaviour:
   shootCD: 2
   eggShooting: 1
   raycastScript: {fileID: 5087707861996586317}
+  meleeDamage: 10
 --- !u!1 &7887882441691795610
 GameObject:
   m_ObjectHideFlags: 0
