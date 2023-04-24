@@ -21,6 +21,10 @@ public class AbstractHealth : MonoBehaviour, IHealth
         return _currentHealth;
     }
 
+    void Start()
+    {
+        Debug.Log(_baseHealth);
+    }
 
     public void SetBaseHealth()
     {

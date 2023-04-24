@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Raycast : MonoBehaviour
 {
+    [SerializeField] private int dmgRaycastDone;
     public void Update()
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out RaycastHit hitinfo, 20f))
@@ -21,7 +22,7 @@ public class Raycast : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out RaycastHit hitinfo, 20f))
         {
-            hitinfo.collider.gameObject.GetComponent<IHealth>().TakeDamage(10, gameObject);
+            hitinfo.collider.gameObject.GetComponent<IHealth>().TakeDamage(dmgRaycastDone, gameObject);
         }
 
     }
