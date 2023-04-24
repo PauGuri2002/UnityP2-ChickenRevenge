@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -254,6 +254,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2678154199526609106, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.514
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678154199526609106, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678154199526609106, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5079174525167319530, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
       propertyPath: cam
       value: 
@@ -269,6 +281,14 @@ PrefabInstance:
     - target: {fileID: 5079174525167319530, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
       propertyPath: dashSpeed
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087707861996586317, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
+      propertyPath: laserRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087707861996586317, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
+      propertyPath: dmgRaycastDone
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5457853735503463893, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
       propertyPath: m_RootOrder
@@ -321,6 +341,22 @@ PrefabInstance:
     - target: {fileID: 7565839162051440814, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7608564694109706151, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 7608564694109706151, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7608564694109706151, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.08789868
+      objectReference: {fileID: 0}
+    - target: {fileID: 7608564694109706151, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8820146201079246367, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_Mode

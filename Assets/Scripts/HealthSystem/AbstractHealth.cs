@@ -23,7 +23,8 @@ public class AbstractHealth : MonoBehaviour, IHealth
 
     void Start()
     {
-        Debug.Log(_baseHealth);
+        SetBaseHealth();
+        //Debug.Log("base health is" + _baseHealth);
     }
 
     public void SetBaseHealth()

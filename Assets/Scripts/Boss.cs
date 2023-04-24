@@ -8,10 +8,10 @@ public class Boss : AbstractHealth
     [SerializeField] private ObjectSpawner knifeSpawner;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        StartPhase();
-    }
+    //void Start()
+    //{
+    //    StartPhase();
+    //}
 
     // Update is called once per frame
     void Update()
