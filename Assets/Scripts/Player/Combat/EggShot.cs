@@ -51,8 +51,9 @@ public class EggShot : AbstractAttack
             {
                 var upgradedShoot = Instantiate(eggPrefab, transform.position, transform.rotation);
                 upgradedShoot.GetComponent<Rigidbody>().velocity = -1 * eggSpeed * transform.forward + transform.up * eggParabolicShoot;
-                eggCount = 0;
+
             }
+            eggCount = 0;
         }
     }
 
