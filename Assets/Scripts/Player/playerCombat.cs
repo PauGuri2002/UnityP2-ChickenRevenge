@@ -7,9 +7,8 @@ public class playerCombat : MonoBehaviour
 {
     private int currentWeapon = 0;
 
-    [Header("Egg Shoot")]
-    [SerializeField] private float shootCD = 1f;
-    [HideInInspector] public bool eggShooting = true;
+    [Header("Egg")]
+    [SerializeField] EggShot eggScript;
 
     [Header("Laser")]
     [SerializeField] Raycast raycastScript;
@@ -42,10 +41,4 @@ public class playerCombat : MonoBehaviour
 
     }
 
-    IEnumerator ShootingEgg()
-    {
-        eggShooting = true;
-        yield return new WaitForSeconds(shootCD);
-        eggShooting = false;
-    }
 }
