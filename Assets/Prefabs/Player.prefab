@@ -1159,6 +1159,7 @@ MonoBehaviour:
   eggSpeed: 10
   dmgEggDone: 30
   eggParabolicShoot: 10
+  eggLiveTime: 2
   chickenControl: {fileID: 5079174525167319530}
 --- !u!1 &9043722435615867306
 GameObject:

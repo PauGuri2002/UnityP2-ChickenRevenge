@@ -288,20 +288,8 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5087707861996586317, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
-      propertyPath: fireRate
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5087707861996586317, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
       propertyPath: timeFire
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5087707861996586317, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
-      propertyPath: laserRange
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5087707861996586317, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
-      propertyPath: dmgRaycastDone
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5457853735503463893, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
       propertyPath: m_RootOrder
@@ -373,10 +361,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8712922150155621976, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
       propertyPath: fireRate
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8712922150155621976, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
-      propertyPath: eggLiveTime
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8820146201079246367, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
@@ -546,6 +530,7 @@ MonoBehaviour:
   _minHealth: 0
   phasesHealthPercent: []
   knifeSpawner: {fileID: 0}
+  enemySpawner: {fileID: 0}
 --- !u!1 &681753531
 GameObject:
   m_ObjectHideFlags: 0
