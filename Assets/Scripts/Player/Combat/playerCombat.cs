@@ -13,12 +13,10 @@ public class playerCombat : MonoBehaviour
     {
         currentAttack = attacks[0];
     }
-
     void Update()
     {
 
     }
-
     public void OnAttack(InputAction.CallbackContext theAttack)
     {
         if (theAttack.started) 
@@ -26,7 +24,6 @@ public class playerCombat : MonoBehaviour
             currentAttack.TryPerformAttack();
         }
     }
-
     public void OnChangeWeapon(InputAction.CallbackContext context)
     {
         if (context.started) {

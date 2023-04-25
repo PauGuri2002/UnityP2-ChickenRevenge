@@ -17,7 +17,6 @@ public class AbstractAttack : MonoBehaviour
     {
         timeFire = fireRate;
     }
-
     public virtual void Update()
     {
         if (fireRate >= timeFire)
@@ -25,7 +24,6 @@ public class AbstractAttack : MonoBehaviour
             timeFire += Time.deltaTime;
         }
     }
-
     public void TryPerformAttack()
     {
         if(timeFire > fireRate)
@@ -34,6 +32,5 @@ public class AbstractAttack : MonoBehaviour
             timeFire = 0f;
         }
     }
-
 }
 

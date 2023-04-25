@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class EggShot : AbstractAttack
 {
-    [Header("Draggable Things")]
+    [Header("Drag Point")]
     [SerializeField] private GameObject eggPrefab;
     [SerializeField] chickenControl chickenControl;
 
@@ -51,6 +51,7 @@ public class EggShot : AbstractAttack
                 upgradedShoot.GetComponent<Rigidbody>().velocity = -1 * eggSpeed * transform.forward + transform.up * eggParabolicShoot;
                 Destroy(upgradedShoot, eggLifeTime);
             }
+
             eggCount = 0;
         }
     }
