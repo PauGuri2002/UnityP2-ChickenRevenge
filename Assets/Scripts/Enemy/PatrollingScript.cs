@@ -58,6 +58,8 @@ public class PatrollingScript : MonoBehaviour
     {
         transform.LookAt(currentTargetPosition);
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
+
+
     }
 
 }

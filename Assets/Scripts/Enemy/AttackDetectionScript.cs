@@ -17,6 +17,7 @@ public class AttackDetectionScript : MonoBehaviour
     private float speed = 4;
     [SerializeField]
     private Transform castPoint;
+    private Vector3 difference;
 
     // Start is called before the first frame update
     void Start()
@@ -35,17 +36,16 @@ public class AttackDetectionScript : MonoBehaviour
     {
         if (IsInRange())           
         {
-            Debug.Log("estas en RANGE");
             if (IsInFOV())
             {
-                Debug.Log("estas en fov");
 
 
                 if (!IsBlocked())
                 {
+                    difference =  transform.position - player.position;  
                     transform.LookAt(player.position);
-                    transform.Translate(player.position * speed * Time.deltaTime);
-                    Debug.Log("Te veo");
+                   transform.Translate(difference * speed * Time.deltaTime);
+                   
                 }
             }
         }
@@ -74,11 +74,9 @@ public class AttackDetectionScript : MonoBehaviour
     {
         if (Physics.Raycast(castPoint.position, Vector3.forward, minDistance, default))
         {
-            Debug.Log("No t veo");
 
             return true;
         }
-        Debug.Log("t veo");
 
         return false;
     }
