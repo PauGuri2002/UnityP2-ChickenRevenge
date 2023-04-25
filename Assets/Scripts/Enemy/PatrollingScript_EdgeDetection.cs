@@ -10,16 +10,14 @@ public class PatrollingScript_EdgeDetection : MonoBehaviour
     [SerializeField]
     private LayerMask whatIsGround;
 
-    private float maxDistance = 2;
+    private float maxDistance = 4;
 
     public float speed = 5;
-    // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (EdgeDetected())
@@ -30,21 +28,25 @@ public class PatrollingScript_EdgeDetection : MonoBehaviour
     }
     private bool EdgeDetected()
     {
-        if (Physics.Raycast(castPoint.position, Vector3.down, maxDistance, whatIsGround))
+        
+        if (Physics.Raycast(castPoint.position, transform.up * -1, maxDistance, whatIsGround))
         {
+
             return false;
         }
+        Debug.Log("No Hay Suelo");
         return true;
     }
     private void Rotate()
     {
-        float rot = Random.Range(90,270);
+        float rot = Random.Range(150, 210);
         transform.Rotate(new Vector3(0, rot, 0));
-        transform.localEulerAngles = new Vector3(0, rot,0);    
+        transform.localEulerAngles = new Vector3(0, rot, 0);
     }
     private void Move()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
     }
+
 }

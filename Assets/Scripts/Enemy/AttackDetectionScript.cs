@@ -17,6 +17,7 @@ public class AttackDetectionScript : MonoBehaviour
     private float speed = 4;
     [SerializeField]
     private Transform castPoint;
+    private Vector3 difference;
 
     // Start is called before the first frame update
     void Start()
@@ -43,8 +44,11 @@ public class AttackDetectionScript : MonoBehaviour
 
                 if (!IsBlocked())
                 {
+                    difference =  transform.position - player.position;  
                     transform.LookAt(player.position);
-                    transform.Translate(player.position * speed * Time.deltaTime);
+                   transform.Translate(difference * speed * Time.deltaTime);
+                   
+                    Debug.Log("diferencia" + difference);
                     Debug.Log("Te veo");
                 }
             }

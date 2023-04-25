@@ -9,7 +9,7 @@ public class AttackBehaviour : StateMachineBehaviour
     //private Vector3 goTo;
     [SerializeField]
     [Range(0f, 10f)]
-    public float detectDistance = 4f;
+    public float detectDistance = 7f;
     private AttackDetectionScript script;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

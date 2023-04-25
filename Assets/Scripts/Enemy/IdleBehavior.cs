@@ -20,6 +20,7 @@ public class IdleBehavior : StateMachineBehaviour
     {
         Execute();
         CheckTriggers(animator);
+
     }
 
     private void CheckTriggers(Animator animator)
