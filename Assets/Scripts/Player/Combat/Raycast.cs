@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Raycast : MonoBehaviour
+public class Raycast : AbstractAttack
 {
     [Header("Laser Weapon Variables")]
     [SerializeField] private int dmgRaycastDone;
@@ -27,7 +27,7 @@ public class Raycast : MonoBehaviour
         }
     }
 
-    public void RaycastDMG()
+    public override void PerformAttack()
     {
         if(timeFire > fireRate)
         {

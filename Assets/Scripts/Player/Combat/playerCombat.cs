@@ -7,18 +7,12 @@ public class playerCombat : MonoBehaviour
 {
     private int currentWeapon = 0;
 
-    [Header("Egg")]
-    [SerializeField] EggShot eggScript;
-
-    [Header("Laser")]
-    [SerializeField] Raycast raycastScript;
-
-    [Header("Melee")]
-    [SerializeField] private float meleeDamage = 10f;
+    [SerializeField] private AbstractAttack[] attacks;
+    private AbstractAttack currentAttack;
 
     void Start()
     {
-
+        currentAttack = attacks[0];
     }
 
     void Update()
@@ -30,8 +24,8 @@ public class playerCombat : MonoBehaviour
     {
 
         if (theAttack.started) 
-        { 
-            raycastScript.RaycastDMG(); 
+        {
+            currentAttack.PerformAttack();
         }
 
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class EggShot : MonoBehaviour
+public class EggShot : AbstractAttack
 {
     [Header("Egg Shoot")]
     [SerializeField] private float shootCD = 1f;
@@ -18,6 +18,10 @@ public class EggShot : MonoBehaviour
         
     }
 
+    public override void PerformAttack()
+    {
+        
+    }
 
     IEnumerator ShootingEgg()
     {
@@ -25,4 +29,6 @@ public class EggShot : MonoBehaviour
         yield return new WaitForSeconds(shootCD);
         eggShooting = false;
     }
+
+    
 }
