@@ -6,6 +6,8 @@ public class Boss : AbstractHealth
     private int currentPhase = 0;
 
     [SerializeField] private ObjectSpawner knifeSpawner;
+    [SerializeField] private EnemySpawner enemySpawner;
+
 
     // Start is called before the first frame update
     //void Start()
@@ -46,6 +48,10 @@ public class Boss : AbstractHealth
                 break;
             case 1:
                 knifeSpawner.DeactivateSpawner();
+                enemySpawner.ActivateSpawner();
+                break;
+            case 2:
+                enemySpawner.DeactivateSpawner();
                 break;
         }
     }
