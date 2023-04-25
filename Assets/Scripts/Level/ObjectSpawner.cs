@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] objectPrefabs;
+    public GameObject[] objectPrefabs;   
     [SerializeField]
     private Vector2 spawnerSize;
     [SerializeField]
@@ -19,7 +18,7 @@ public class ObjectSpawner : MonoBehaviour
 
     private List<GameObject> spawnedObjects = new List<GameObject>();
     private Coroutine c;
-    private Transform player;
+    [HideInInspector]public Transform player;
 
     private void Start()
     {
@@ -39,7 +38,7 @@ public class ObjectSpawner : MonoBehaviour
         c = null;
     }
 
-    IEnumerator SpawnObject()
+    public virtual IEnumerator SpawnObject()
     {
         while (true)
         {
