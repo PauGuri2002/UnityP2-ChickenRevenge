@@ -1007,11 +1007,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e113296353c7124381a2c4c35660f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgRaycastDone: 0
+  dmgRaycastDone: 10
   laserRange: 50
   laserDuration: 0.05
-  timeFire: 5
-  fireRate: 10
+  fireRate: 0.5
 --- !u!120 &7608564694109706151
 LineRenderer:
   m_ObjectHideFlags: 0
