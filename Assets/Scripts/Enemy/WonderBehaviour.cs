@@ -7,33 +7,17 @@ public class WonderBehaviour : StateMachineBehaviour
     Transform player;
     private PatrollingScript_EdgeDetection script;
     public List<Transform> wayPoints;
-    //private int nextPosition = 0;
-    //private int lastPosition = 0;
-    //public float speed = 3f;
-    //private Vector3 dir;
-    //private Vector3 goTo;
-    //private bool isReturning = false;
     public float detectDistance = 4;
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         script = animator.gameObject.GetComponent<PatrollingScript_EdgeDetection>();
 
-        //for (int i = 0; i < length; i++)
-        //{
-
-        //        wayPoints.Add( GameObject.FindGameObjectsWithTag("WayPoint")[i].transform);
-
-
-            
-        //}
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //CheckPosition(animator);
-        //SetDirection(animator);
+       
         Execute(animator);
         CheckTriggers(animator);
         

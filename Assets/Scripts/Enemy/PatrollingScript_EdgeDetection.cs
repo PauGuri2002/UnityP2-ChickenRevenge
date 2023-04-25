@@ -10,7 +10,7 @@ public class PatrollingScript_EdgeDetection : MonoBehaviour
     [SerializeField]
     private LayerMask whatIsGround;
 
-    private float maxDistance = 4;
+    private float maxDistance = 2;
 
     public float speed = 5;
 
@@ -27,9 +27,10 @@ public class PatrollingScript_EdgeDetection : MonoBehaviour
         
         if (Physics.Raycast(castPoint.position, transform.up * -1, maxDistance, whatIsGround))
         {
-
+            Debug.Log("Hay suelo");
             return false;
         }
+        Debug.Log("No Hay Suelo");
         return true;
     }
     private void Rotate()
