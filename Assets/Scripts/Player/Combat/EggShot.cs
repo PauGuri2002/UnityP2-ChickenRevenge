@@ -6,33 +6,38 @@ using UnityEngine.InputSystem;
 public class EggShot : AbstractAttack
 {
     [Header("Egg Shoot")]
-    [SerializeField] private float shootCD = 1f;
-    [HideInInspector] public bool eggShooting = true;
-
     [SerializeField] private GameObject eggPrefab;
-    [SerializeField] private float eggSpeed = 10f;
-    void Start()
+    [SerializeField] private float eggSpeed;
+    [SerializeField] private int dmgEggDone;
+    [SerializeField] private int eggParabolicShoot;
+    [SerializeField] private float eggLiveTime;
+
+    [SerializeField] chickenControl chickenControl;
+
+    public override void StartAttack()
     {
-        
+        base.StartAttack();
+        chickenControl.rotationChicken = 180f;
     }
 
-    void Update()
+    public override void EndAttack()
     {
-        
+        base.EndAttack();
+        chickenControl.rotationChicken = 0f;
     }
 
     public override void PerformAttack()
     {
         var egg = Instantiate(eggPrefab, transform.position, transform.rotation);
-        egg.GetComponent<Rigidbody>().velocity = transform.forward * eggSpeed;
+        egg.GetComponent<Rigidbody>().velocity = transform.forward*-1 * eggSpeed + transform.up* eggParabolicShoot;
+        //gameObject.GetComponent<IHealth>().TakeDamage(dmgEggDone, gameObject);
+        StartCoroutine(DestoyEgg());
+        //Destroy(egg);
+        Debug.Log("enter");
     }
 
-    //IEnumerator ShootingEgg()
-    //{
-    //    eggShooting = true;
-    //    yield return new WaitForSeconds(shootCD);
-    //    eggShooting = false;
-    //}
-
-    
+    IEnumerator DestoyEgg()
+    {
+        yield return new WaitForSeconds(eggLiveTime);
+    }
 }

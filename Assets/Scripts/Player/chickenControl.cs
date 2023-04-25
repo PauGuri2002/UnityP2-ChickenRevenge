@@ -33,6 +33,10 @@ public class chickenControl : MonoBehaviour
     [Header("Player Animator")]
     [SerializeField] private Animator _playerAnimator;
 
+
+    [Header("Player Rotation")]
+    [HideInInspector] public float rotationChicken = 0f;
+
     CharacterController characterController;
 
     void Start()
@@ -153,7 +157,11 @@ public class chickenControl : MonoBehaviour
 
         Vector3 hvMove = new Vector3(horizontalMove.x * speed, verticalMove, horizontalMove.z * speed);
         characterController.Move((hvMove * dashPlayerControll + externalForces) * Time.deltaTime);
-        if (horizontalMove.magnitude > 0) { modelKFC.transform.rotation = Quaternion.LookRotation(horizontalMove); }
+        if (horizontalMove.magnitude > 0) 
+        { 
+            modelKFC.transform.rotation = Quaternion.LookRotation(horizontalMove) * Quaternion.Euler(0, rotationChicken, 0);
+        }
+  
 
         // reset all properties when grounded
         if (characterController.isGrounded)

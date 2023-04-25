@@ -24,7 +24,7 @@ public class playerCombat : MonoBehaviour
 
         if (theAttack.started) 
         {
-            currentAttack.PerformAttack();
+            currentAttack.TryPerformAttack();
         }
 
     }

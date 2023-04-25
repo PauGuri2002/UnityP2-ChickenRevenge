@@ -904,6 +904,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   modelKFC: {fileID: 5151934217256745421}
   _playerAnimator: {fileID: 5457853736291740609}
+  rotationChicken: 0
 --- !u!114 &6282903418717495729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1006,10 +1007,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e113296353c7124381a2c4c35660f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireRate: 0.5
   dmgRaycastDone: 10
   laserRange: 50
   laserDuration: 0.05
-  fireRate: 0.5
 --- !u!120 &7608564694109706151
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1153,10 +1154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36956995eba647a4c8cdf09abb5a8df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootCD: 1
-  eggShooting: 1
-  eggPrefab: {fileID: 0}
+  fireRate: 0.5
+  eggPrefab: {fileID: 4413288184132055112, guid: a42884e882bc39449981c99fa058e744, type: 3}
   eggSpeed: 10
+  dmgEggDone: 30
+  eggParabolicShoot: 10
+  chickenControl: {fileID: 5079174525167319530}
 --- !u!1 &9043722435615867306
 GameObject:
   m_ObjectHideFlags: 0
