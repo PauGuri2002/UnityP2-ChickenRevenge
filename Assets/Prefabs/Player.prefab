@@ -898,7 +898,7 @@ MonoBehaviour:
   gravity: 15
   externalForces: {x: 0, y: 0, z: 0}
   movementEnabled: 1
-  dashSpeed: 5
+  dashSpeed: 15
   dashTime: 0.2
   dashCD: 1.5
   cam: {fileID: 0}
@@ -1154,13 +1154,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36956995eba647a4c8cdf09abb5a8df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.5
+  fireRate: 1.5
   eggPrefab: {fileID: 4413288184132055112, guid: a42884e882bc39449981c99fa058e744, type: 3}
-  eggSpeed: 10
-  dmgEggDone: 30
-  eggParabolicShoot: 10
-  eggLiveTime: 2
   chickenControl: {fileID: 5079174525167319530}
+  eggSpeed: 13
+  eggParabolicShoot: 15
+  dmgEggDone: 30
+  eggMaxCount: 5
+  eggLiveTime: 2
 --- !u!1 &9043722435615867306
 GameObject:
   m_ObjectHideFlags: 0
