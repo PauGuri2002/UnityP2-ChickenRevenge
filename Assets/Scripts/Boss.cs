@@ -9,17 +9,7 @@ public class Boss : AbstractHealth
     [SerializeField] private EnemySpawner enemySpawner;
 
 
-    // Start is called before the first frame update
-    //void Start()
-    //{
-    //    StartPhase();
-    //}
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public override void TakeDamage(int damage, GameObject origin)
     {
@@ -40,7 +30,6 @@ public class Boss : AbstractHealth
 
     void StartPhase()
     {
-        Debug.Log("Boss is starting phase " + (currentPhase + 1));
         switch (currentPhase)
         {
             case 0:
@@ -50,9 +39,7 @@ public class Boss : AbstractHealth
                 knifeSpawner.DeactivateSpawner();
                 enemySpawner.ActivateSpawner();
                 break;
-            case 2:
-                enemySpawner.DeactivateSpawner();
-                break;
+
         }
     }
 }

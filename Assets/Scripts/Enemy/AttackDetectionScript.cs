@@ -36,10 +36,8 @@ public class AttackDetectionScript : MonoBehaviour
     {
         if (IsInRange())           
         {
-            Debug.Log("estas en RANGE");
             if (IsInFOV())
             {
-                Debug.Log("estas en fov");
 
 
                 if (!IsBlocked())
@@ -48,8 +46,6 @@ public class AttackDetectionScript : MonoBehaviour
                     transform.LookAt(player.position);
                    transform.Translate(difference * speed * Time.deltaTime);
                    
-                    Debug.Log("diferencia" + difference);
-                    Debug.Log("Te veo");
                 }
             }
         }
@@ -78,11 +74,9 @@ public class AttackDetectionScript : MonoBehaviour
     {
         if (Physics.Raycast(castPoint.position, Vector3.forward, minDistance, default))
         {
-            Debug.Log("No t veo");
 
             return true;
         }
-        Debug.Log("t veo");
 
         return false;
     }

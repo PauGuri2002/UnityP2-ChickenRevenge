@@ -18,7 +18,7 @@ public class WonderBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        script = animator.GetComponent<PatrollingScript_EdgeDetection>();
+        script = animator.gameObject.GetComponent<PatrollingScript_EdgeDetection>();
 
         //for (int i = 0; i < length; i++)
         //{

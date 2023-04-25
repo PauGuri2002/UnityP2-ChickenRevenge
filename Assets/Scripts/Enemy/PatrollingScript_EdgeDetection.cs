@@ -13,10 +13,6 @@ public class PatrollingScript_EdgeDetection : MonoBehaviour
     private float maxDistance = 4;
 
     public float speed = 5;
-    void Start()
-    {
-
-    }
 
     void Update()
     {
@@ -34,7 +30,6 @@ public class PatrollingScript_EdgeDetection : MonoBehaviour
 
             return false;
         }
-        Debug.Log("No Hay Suelo");
         return true;
     }
     private void Rotate()
