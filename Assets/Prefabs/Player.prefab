@@ -512,6 +512,7 @@ Transform:
   - {fileID: 3496021610045846505}
   - {fileID: 8292731819977202993}
   - {fileID: 2678154199526609106}
+  - {fileID: 3894526432037279636}
   m_Father: {fileID: 5457853735503463893}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -919,7 +920,6 @@ MonoBehaviour:
   camRotator: {fileID: 2541617839210178612}
   rotationSens: 20
   playerRenderer: {fileID: 5151934217256745421}
-  target: {fileID: 0}
 --- !u!114 &5457853735503463894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,10 +949,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5923e917a846fa04ca5a5c592a438bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootCD: 2
-  eggShooting: 1
-  raycastScript: {fileID: 5087707861996586317}
-  meleeDamage: 10
+  attacks:
+  - {fileID: 5087707861996586317}
+  - {fileID: 8712922150155621976}
 --- !u!1 &7887882441691795610
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,7 +965,7 @@ GameObject:
   - component: {fileID: 5087707861996586317}
   - component: {fileID: 7608564694109706151}
   m_Layer: 0
-  m_Name: pointer
+  m_Name: raycastPointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1110,6 +1109,54 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!1 &7980993774714329684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3894526432037279636}
+  - component: {fileID: 8712922150155621976}
+  m_Layer: 0
+  m_Name: eggPointer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3894526432037279636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980993774714329684}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.281}
+  m_LocalScale: {x: 1.25, y: 1, z: 1.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5491163874372936567}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8712922150155621976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980993774714329684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36956995eba647a4c8cdf09abb5a8df3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootCD: 1
+  eggShooting: 1
+  eggPrefab: {fileID: 0}
+  eggSpeed: 10
 --- !u!1 &9043722435615867306
 GameObject:
   m_ObjectHideFlags: 0

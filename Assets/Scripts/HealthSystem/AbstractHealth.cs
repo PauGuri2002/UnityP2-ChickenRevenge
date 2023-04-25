@@ -36,7 +36,7 @@ public class AbstractHealth : MonoBehaviour, IHealth
     public virtual void TakeDamage(int damage, GameObject origin)
     {
         _currentHealth -= damage;
-        if (_healthBar != null) { _healthBar.GetComponent<HealthBar>().SetHealth(_currentHealth); }
+        if (_healthBar != null) { _healthBar.GetComponent<HealthBar>().SetHealth(_currentHealth); } //action player agafnt mal, this risk onHit i el health bar subscript
 
         Debug.Log(gameObject.name + " health: " + _currentHealth);
 
