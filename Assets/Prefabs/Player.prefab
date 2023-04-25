@@ -677,8 +677,6 @@ GameObject:
   - component: {fileID: 6282903418717495729}
   - component: {fileID: 5457853735503463894}
   - component: {fileID: 8813540242839300041}
-  - component: {fileID: 3311394948788844328}
-  - component: {fileID: 1195552698208639563}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -953,24 +951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - {fileID: 5087707861996586317}
-  - {fileID: 1195552698208639563}
---- !u!114 &1195552698208639563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7565839162051440814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36956995eba647a4c8cdf09abb5a8df3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootCD: 1
-  eggShooting: 1
-  m_Script: {fileID: 11500000, guid: f68f46e845940db419c85113c78511b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  - {fileID: 8712922150155621976}
 --- !u!1 &7887882441691795610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,6 +1118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3894526432037279636}
+  - component: {fileID: 8712922150155621976}
   m_Layer: 0
   m_Name: eggPointer
   m_TagString: Untagged
@@ -1159,6 +1141,22 @@ Transform:
   m_Father: {fileID: 5491163874372936567}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8712922150155621976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980993774714329684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36956995eba647a4c8cdf09abb5a8df3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootCD: 1
+  eggShooting: 1
+  eggPrefab: {fileID: 0}
+  eggSpeed: 10
 --- !u!1 &9043722435615867306
 GameObject:
   m_ObjectHideFlags: 0
