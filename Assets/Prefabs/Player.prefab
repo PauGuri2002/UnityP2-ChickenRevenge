@@ -678,6 +678,7 @@ GameObject:
   - component: {fileID: 5457853735503463894}
   - component: {fileID: 8813540242839300041}
   - component: {fileID: 3311394948788844328}
+  - component: {fileID: 1195552698208639563}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -952,7 +953,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - {fileID: 5087707861996586317}
---- !u!114 &3311394948788844328
+  - {fileID: 1195552698208639563}
+--- !u!114 &1195552698208639563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -966,6 +968,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootCD: 1
   eggShooting: 1
+  m_Script: {fileID: 11500000, guid: f68f46e845940db419c85113c78511b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7887882441691795610
 GameObject:
   m_ObjectHideFlags: 0
