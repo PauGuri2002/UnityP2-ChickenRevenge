@@ -351,10 +351,6 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.key1.r
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8712922150155621976, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
-      propertyPath: eggNumberSpawn
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8820146201079246367, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1

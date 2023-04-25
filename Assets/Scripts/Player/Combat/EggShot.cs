@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class EggShot : AbstractAttack
 {
+    [Header("Draggable Things")]
     [SerializeField] private GameObject eggPrefab;
     [SerializeField] chickenControl chickenControl;
 
@@ -21,9 +22,7 @@ public class EggShot : AbstractAttack
     private float eggCount = 0;
 
     [Header("Egg Destroy")]
-    [SerializeField] private float eggLiveTime = 6f;
-
-
+    [SerializeField] private float eggLifeTime = 6f;
     public override void StartAttack()
     {
         base.StartAttack();
@@ -34,31 +33,25 @@ public class EggShot : AbstractAttack
         base.EndAttack();
         chickenControl.rotationChicken = 0f;
     }
-
     public override void PerformAttack() 
     {
-        var egg = Instantiate(eggPrefab, transform.position, transform.rotation);
-
-        if(eggCount <= eggMaxCount)
+        if (eggCount < eggMaxCount)
         {
-            egg.GetComponent<Rigidbody>().velocity = transform.forward * -1 * eggSpeed + transform.up * eggParabolicShoot;
+            var egg = Instantiate(eggPrefab, transform.position, transform.rotation);
+            egg.GetComponent<Rigidbody>().velocity = -1 * eggSpeed * transform.forward + transform.up * eggParabolicShoot;
             eggCount++;
+            Destroy(egg, eggLifeTime);
         }
 
-        if(eggCount > eggMaxCount) // seguro que hay un código mas limpio para esta condición
+        if(eggCount == eggMaxCount)
         {
             for(int i = 1; i < eggNumberSpawn; i++)
             {
                 var upgradedShoot = Instantiate(eggPrefab, transform.position, transform.rotation);
                 upgradedShoot.GetComponent<Rigidbody>().velocity = -1 * eggSpeed * transform.forward + transform.up * eggParabolicShoot;
-
+                Destroy(upgradedShoot, eggLifeTime);
             }
             eggCount = 0;
         }
     }
-
-    //IEnumerator DestoyEgg()
-    //{
-    //    yield return new WaitForSeconds(eggLiveTime);
-    //}
 }

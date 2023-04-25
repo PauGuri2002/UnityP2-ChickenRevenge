@@ -1161,7 +1161,8 @@ MonoBehaviour:
   eggParabolicShoot: 15
   dmgEggDone: 30
   eggMaxCount: 5
-  eggLiveTime: 2
+  eggNumberSpawn: 3
+  eggLiveTime: 10
 --- !u!1 &9043722435615867306
 GameObject:
   m_ObjectHideFlags: 0

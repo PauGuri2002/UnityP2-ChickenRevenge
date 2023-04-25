@@ -21,12 +21,10 @@ public class playerCombat : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext theAttack)
     {
-
         if (theAttack.started) 
         {
             currentAttack.TryPerformAttack();
         }
-
     }
 
     public void OnChangeWeapon(InputAction.CallbackContext context)
@@ -51,6 +49,5 @@ public class playerCombat : MonoBehaviour
 
             Debug.Log("Current attack: " + newIndex);
         }
-        
     }
 }
