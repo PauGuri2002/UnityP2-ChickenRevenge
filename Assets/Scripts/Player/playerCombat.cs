@@ -8,7 +8,7 @@ public class playerCombat : MonoBehaviour
     private int currentWeapon = 0;
 
     [Header("Egg Shoot")]
-    [SerializeField] private float shootCD = 2f;
+    [SerializeField] private float shootCD = 1f;
     [HideInInspector] public bool eggShooting = true;
 
     [Header("Laser")]
@@ -32,7 +32,6 @@ public class playerCombat : MonoBehaviour
 
         if (theAttack.started) 
         { 
-            Debug.Log("Button Action Enter"); 
             raycastScript.RaycastDMG(); 
         }
 
