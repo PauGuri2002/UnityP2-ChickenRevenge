@@ -1158,11 +1158,10 @@ MonoBehaviour:
   eggPrefab: {fileID: 4413288184132055112, guid: a42884e882bc39449981c99fa058e744, type: 3}
   chickenControl: {fileID: 5079174525167319530}
   eggSpeed: 13
-  eggParabolicShoot: 15
-  dmgEggDone: 30
+  eggParabolicShoot: 10
   eggMaxCount: 5
   eggNumberSpawn: 3
-  eggLiveTime: 10
+  eggLifeTime: 6
 --- !u!1 &9043722435615867306
 GameObject:
   m_ObjectHideFlags: 0

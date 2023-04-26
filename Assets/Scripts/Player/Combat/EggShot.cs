@@ -13,8 +13,6 @@ public class EggShot : AbstractAttack
     [SerializeField] private float eggSpeed = 10f;
     [SerializeField] private float eggParabolicShoot = 15f;
 
-    [Header("Egg DMG")]
-    [SerializeField] private int dmgEggDone = 20;
 
     [Header("Egg Hidden Secret")]
     [SerializeField] private float eggMaxCount = 5;
@@ -35,24 +33,23 @@ public class EggShot : AbstractAttack
     }
     public override void PerformAttack() 
     {
+        float[] spawnDirection = { 0, 1, -1 };
         if (eggCount < eggMaxCount)
         {
-            var egg = Instantiate(eggPrefab, transform.position, transform.rotation);
-            egg.GetComponent<Rigidbody>().velocity = -1 * eggSpeed * transform.forward + transform.up * eggParabolicShoot;
+            eggNumberSpawn = 1;
             eggCount++;
-            Destroy(egg, eggLifeTime);
+        }
+        else
+        {
+            eggNumberSpawn = 3;
+            eggCount = 0;
         }
 
-        if(eggCount == eggMaxCount)
-        {
-            for(int i = 1; i < eggNumberSpawn; i++)
-            {
-                var upgradedShoot = Instantiate(eggPrefab, transform.position, transform.rotation);
-                upgradedShoot.GetComponent<Rigidbody>().velocity = -1 * eggSpeed * transform.forward + transform.up * eggParabolicShoot;
-                Destroy(upgradedShoot, eggLifeTime);
-            }
-
-            eggCount = 0;
+        for (int i = 0; i < eggNumberSpawn; i++)
+        {        
+            var egg = Instantiate(eggPrefab, transform.position, transform.rotation);
+            egg.GetComponent<Rigidbody>().velocity = -1 * eggSpeed * transform.forward + transform.up * eggParabolicShoot + transform.right * spawnDirection[i];
+            Destroy(egg, eggLifeTime);
         }
     }
 }
