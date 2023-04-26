@@ -7,6 +7,7 @@ public class Boss : AbstractHealth
 
     [SerializeField] private ObjectSpawner knifeSpawner;
     [SerializeField] private EnemySpawner enemySpawner;
+    [SerializeField] private Renderer modelRenderer;
 
 
 
@@ -30,6 +31,8 @@ public class Boss : AbstractHealth
 
     void StartPhase()
     {
+        Debug.Log("FUNCIONO HEHE");
+        Debug.Log(currentPhase);
         switch (currentPhase)
         {
             case 0:
@@ -38,6 +41,9 @@ public class Boss : AbstractHealth
             case 1:
                 knifeSpawner.DeactivateSpawner();
                 enemySpawner.ActivateSpawner();
+                break;
+            default:
+                modelRenderer.material.SetColor("_Color", Color.red);
                 break;
 
         }
