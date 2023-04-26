@@ -846,10 +846,7 @@ MonoBehaviour:
   _healthBar: {fileID: 1381259537}
   _baseHealth: 100
   _minHealth: 0
-  phasesHealthPercent:
-  - 1
-  - 0.6667
-  - 0.3333
+  phasesHealthPercent: 640000004300000022000000
   knifeSpawner: {fileID: 450980886}
   enemySpawner: {fileID: 450980888}
   modelRenderer: {fileID: 417848320}

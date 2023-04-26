@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Boss : AbstractHealth
 {
-    [SerializeField] private float[] phasesHealthPercent;
+    [SerializeField] private int[] phasesHealthPercent;
     private int currentPhase = 0;
 
     [SerializeField] private ObjectSpawner knifeSpawner;
@@ -16,36 +16,35 @@ public class Boss : AbstractHealth
     {
         base.TakeDamage(damage, origin);
 
-        int i = 0;
-        foreach (float healthPercent in phasesHealthPercent)
+        if (GetCurrentHealth() < phasesHealthPercent[currentPhase])
         {
-            if (GetBaseHealth() * healthPercent <= GetCurrentHealth() && currentPhase != i)
-            {
-                currentPhase = i;
-                StartPhase();
-            }
-
-            i++;
+            StartPhase();
+            currentPhase++;
         }
     }
 
     void StartPhase()
     {
-        Debug.Log("FUNCIONO HEHE");
-        Debug.Log(currentPhase);
         switch (currentPhase)
         {
             case 0:
                 knifeSpawner.ActivateSpawner();
+                ChangeColor(Color.green);
                 break;
             case 1:
                 knifeSpawner.DeactivateSpawner();
                 enemySpawner.ActivateSpawner();
+                ChangeColor(Color.yellow);
                 break;
-            default:
-                modelRenderer.material.SetColor("_Color", Color.red);
+            case 2:
+                ChangeColor(Color.red);
                 break;
 
         }
+    }
+
+    void ChangeColor(Color color)
+    {
+        modelRenderer.material.SetColor("_Color", color);
     }
 }
