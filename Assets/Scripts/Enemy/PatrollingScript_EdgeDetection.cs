@@ -25,7 +25,7 @@ public class PatrollingScript_EdgeDetection : MonoBehaviour
     private bool EdgeDetected()
     {
         
-        if (Physics.Raycast(castPoint.position, transform.up * -1, maxDistance, whatIsGround))
+        if (Physics.Raycast(castPoint.position, Vector3.down, maxDistance, whatIsGround))
         {
             Debug.Log("Hay suelo");
             return false;
@@ -37,7 +37,7 @@ public class PatrollingScript_EdgeDetection : MonoBehaviour
     {
         float rot = Random.Range(150, 210);
         transform.Rotate(new Vector3(0, rot, 0));
-        transform.localEulerAngles = new Vector3(0, rot, 0);
+        Debug.Log(transform.localEulerAngles.y);
     }
     private void Move()
     {
