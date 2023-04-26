@@ -21,13 +21,11 @@ public class Raycast : AbstractAttack
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hitinfo, laserRange))
         {
             laserLine.SetPosition(1, hitinfo.point);
-            //Debug.Log(hitinfo.point);
             IHealth h = hitinfo.collider.gameObject.GetComponent<IHealth>();
             if(h != null)
             {
                 h.TakeDamage(dmgRaycastDone, gameObject);
             }
-            
         }
         else
         {
