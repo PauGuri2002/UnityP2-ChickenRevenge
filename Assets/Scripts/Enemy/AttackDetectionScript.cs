@@ -54,7 +54,7 @@ public class AttackDetectionScript : MonoBehaviour
     {
         if (other.GetComponent<IHealth>() != null && other.CompareTag("Player"))
         {
-            other.GetComponent<IHealth>().TakeDamage(10, this.gameObject);
+            other.GetComponent<IHealth>().TakeDamage(3, this.gameObject);
         }
     }
     private bool IsInFOV()
