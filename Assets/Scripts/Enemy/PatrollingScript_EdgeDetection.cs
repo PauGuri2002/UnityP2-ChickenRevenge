@@ -37,7 +37,7 @@ public class PatrollingScript_EdgeDetection : MonoBehaviour
     {
         float rot = Random.Range(150, 210);
         transform.Rotate(new Vector3(0, rot, 0));
-        Debug.Log(transform.localEulerAngles.y);
+        //Debug.Log(transform.localEulerAngles.y);
     }
     private void Move()
     {

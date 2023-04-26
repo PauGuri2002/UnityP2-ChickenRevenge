@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2457626553727112879}
   - component: {fileID: 2756070112746588791}
   - component: {fileID: 3838954156346884574}
-  - component: {fileID: 6368640173732016577}
   - component: {fileID: 8380097065369431661}
   - component: {fileID: 3603684079543827119}
   m_Layer: 0
@@ -100,19 +99,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &6368640173732016577
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4413288184132055112}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8380097065369431661
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -142,6 +128,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmgEggDone: 20
-  hitPoint: {fileID: 3838954156346884574}
-  aoePoint: {fileID: 6368640173732016577}
+  aoeRadius: 5
   particles: {fileID: 6356098811270752961, guid: 092cad02ea11ca944a7eecd10dbd25b9, type: 3}
