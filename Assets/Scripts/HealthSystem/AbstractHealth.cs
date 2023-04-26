@@ -30,7 +30,8 @@ public class AbstractHealth : MonoBehaviour, IHealth
     public void SetBaseHealth()
     {
         _currentHealth = _baseHealth;
-        _healthBar.GetComponent<HealthBar>().SetBaseHealth(_baseHealth);
+        if(_healthBar != null) { _healthBar.GetComponent<HealthBar>().SetBaseHealth(_baseHealth); }
+       
     }
 
     public virtual void TakeDamage(int damage, GameObject origin)
