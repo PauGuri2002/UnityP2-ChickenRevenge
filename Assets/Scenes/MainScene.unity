@@ -123,11 +123,58 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &13882272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2e158340cefa5e34ca3e984382b6e4fe, type: 3}
+  m_PrefabInstance: {fileID: 1267868869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &13882273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e158340cefa5e34ca3e984382b6e4fe, type: 3}
   m_PrefabInstance: {fileID: 1267868869}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &13882274
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13882272}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &297855630
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +359,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!137 &417848320 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8162758049801888361, guid: 2e158340cefa5e34ca3e984382b6e4fe, type: 3}
+  m_PrefabInstance: {fileID: 1267868869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &450980885
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,6 +852,7 @@ MonoBehaviour:
   - 0.3333
   knifeSpawner: {fileID: 450980886}
   enemySpawner: {fileID: 450980888}
+  modelRenderer: {fileID: 417848320}
 --- !u!136 &634303634
 CapsuleCollider:
   m_ObjectHideFlags: 0
