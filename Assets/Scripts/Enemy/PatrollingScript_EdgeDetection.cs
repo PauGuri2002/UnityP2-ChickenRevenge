@@ -27,10 +27,10 @@ public class PatrollingScript_EdgeDetection : MonoBehaviour
         
         if (Physics.Raycast(castPoint.position, Vector3.down, maxDistance, whatIsGround))
         {
-            Debug.Log("Hay suelo");
+            //Debug.Log("Hay suelo");
             return false;
         }
-        Debug.Log("No Hay Suelo");
+        //Debug.Log("No Hay Suelo");
         return true;
     }
     private void Rotate()
