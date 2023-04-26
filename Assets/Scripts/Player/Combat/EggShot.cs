@@ -33,6 +33,7 @@ public class EggShot : AbstractAttack
     }
     public override void PerformAttack() 
     {
+        float[] spawnDirection = { 0, 1, -1 };
         if (eggCount < eggMaxCount)
         {
             eggNumberSpawn = 1;
@@ -45,9 +46,9 @@ public class EggShot : AbstractAttack
         }
 
         for (int i = 0; i < eggNumberSpawn; i++)
-        {
+        {        
             var egg = Instantiate(eggPrefab, transform.position, transform.rotation);
-            egg.GetComponent<Rigidbody>().velocity = -1 * eggSpeed * transform.forward + transform.up * eggParabolicShoot;
+            egg.GetComponent<Rigidbody>().velocity = -1 * eggSpeed * transform.forward + transform.up * eggParabolicShoot + transform.right * spawnDirection[i];
             Destroy(egg, eggLifeTime);
         }
     }
