@@ -11,16 +11,13 @@ public class eggDMG : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (other.gameObject.GetComponent<IHealth>() != null)
-        {
-            other.gameObject.GetComponent<IHealth>().TakeDamage(dmgEggDone, gameObject);
-            Instantiate(particles, transform.position, transform.rotation);
-            Destroy(gameObject);
-        }
-
+        Debug.Log(other.name);
         if (!other.gameObject.CompareTag("Player") && other.GetComponent<eggDMG>() == null)
         {
+            if (other.gameObject.GetComponent<IHealth>() != null)
+            {
+                other.gameObject.GetComponent<IHealth>().TakeDamage(dmgEggDone, gameObject);
+            }
             Instantiate(particles, transform.position, transform.rotation);
             Destroy(gameObject);
         }
