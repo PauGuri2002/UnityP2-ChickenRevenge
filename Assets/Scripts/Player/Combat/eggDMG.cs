@@ -6,6 +6,8 @@ public class eggDMG : MonoBehaviour
 {
     [Header("Egg DMG")]
     [SerializeField] private int dmgEggDone = 20;
+    [SerializeField] SphereCollider hitPoint;
+    [SerializeField] SphereCollider aoePoint;
 
     [SerializeField] private GameObject particles;
 
@@ -18,8 +20,10 @@ public class eggDMG : MonoBehaviour
             {
                 other.gameObject.GetComponent<IHealth>().TakeDamage(dmgEggDone, gameObject);
             }
+            aoePoint.enabled = true;
+            hitPoint.enabled = false;
             Instantiate(particles, transform.position, transform.rotation);
-            Destroy(gameObject);
+            Destroy(gameObject, Time.deltaTime*2);
         }
     }
 }
