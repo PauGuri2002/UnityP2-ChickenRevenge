@@ -22,7 +22,12 @@ public class Raycast : AbstractAttack
         {
             laserLine.SetPosition(1, hitinfo.point);
             //Debug.Log(hitinfo.point);
-            hitinfo.collider.gameObject.GetComponent<IHealth>().TakeDamage(dmgRaycastDone, gameObject);
+            IHealth h = hitinfo.collider.gameObject.GetComponent<IHealth>();
+            if(h != null)
+            {
+                h.TakeDamage(dmgRaycastDone, gameObject);
+            }
+            
         }
         else
         {
