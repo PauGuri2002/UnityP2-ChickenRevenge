@@ -7,11 +7,21 @@ public class eggDMG : MonoBehaviour
     [Header("Egg DMG")]
     [SerializeField] private int dmgEggDone = 20;
 
-    private void OnCollisionEnter(Collision collision)
+    [SerializeField] private GameObject particles;
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.GetComponent<IHealth>() != null)
+
+        if (other.gameObject.GetComponent<IHealth>() != null)
         {
-            collision.gameObject.GetComponent<IHealth>().TakeDamage(dmgEggDone, gameObject);
+            other.gameObject.GetComponent<IHealth>().TakeDamage(dmgEggDone, gameObject);
+            Instantiate(particles, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+
+        if (!other.gameObject.CompareTag("Player") && other.GetComponent<eggDMG>() == null)
+        {
+            Instantiate(particles, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
