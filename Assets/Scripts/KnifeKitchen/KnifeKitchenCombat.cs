@@ -19,14 +19,10 @@ public class KnifeKitchenCombat : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) //agafar interface en comptes de comapretag
+        IHealth targetHealth = other.transform.gameObject.GetComponent<IHealth>();
+        if (targetHealth != null) //agafar interface en comptes de comapretag
         {
-            GameObject target = other.transform.gameObject;
-            IHealth targetHealth = target.GetComponent<IHealth>();
-            if (targetHealth != null)
-            {
-                targetHealth.TakeDamage(hitDamage, gameObject);
-            }
+            targetHealth.TakeDamage(hitDamage, gameObject);
         }
     }
 }

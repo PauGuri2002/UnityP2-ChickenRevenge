@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AbstractHealth : MonoBehaviour, IHealth
@@ -11,8 +14,10 @@ public class AbstractHealth : MonoBehaviour, IHealth
 
     private int _currentHealth;
 
+    public static Action<int, GameObject> OnHit;
+
     //Getters
-    public int GetBaseHealth()
+    public int GetBaseHealth() 
     {
         return _baseHealth;
     }
@@ -24,22 +29,21 @@ public class AbstractHealth : MonoBehaviour, IHealth
     void Start()
     {
         SetBaseHealth();
-        //Debug.Log("base health is" + _baseHealth);
     }
 
     public void SetBaseHealth()
     {
         _currentHealth = _baseHealth;
-        if(_healthBar != null) { _healthBar.GetComponent<HealthBar>().SetBaseHealth(_baseHealth); }
-       
+        if(_healthBar != null) 
+        { 
+            _healthBar.GetComponent<HealthBar>().SetBaseHealth(_baseHealth); 
+        }
     }
 
     public virtual void TakeDamage(int damage, GameObject origin)
     {
         _currentHealth -= damage;
-        if (_healthBar != null) { _healthBar.GetComponent<HealthBar>().SetHealth(_currentHealth); } //action player agafnt mal, this risk onHit i el health bar subscript
-
-        Debug.Log(gameObject.name + " health: " + _currentHealth);
+        OnHit?.Invoke(_currentHealth, _healthBar);
 
         if (_currentHealth <= _minHealth)
         {
