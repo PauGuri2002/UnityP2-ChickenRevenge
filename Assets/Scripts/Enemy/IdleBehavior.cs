@@ -25,14 +25,15 @@ public class IdleBehavior : StateMachineBehaviour
 
     private void CheckTriggers(Animator animator)
     {
-        bool isPlayer = isPlayerClose(player, animator.transform);
-        if (!animator.gameObject.CompareTag("Enemy"))
+        bool isPlayer = IsPlayerClose(player, animator.transform);
+        if (animator.gameObject.CompareTag("ShieldEnemy"))
+
         {
             animator.SetBool("IsChasing", isPlayer);
 
         }
 
-        bool timeUp = isTimeUp();
+        bool timeUp = IsTimeUp();
         animator.SetBool("IsPatrolling", timeUp);
     }
     private void Execute()
@@ -41,12 +42,12 @@ public class IdleBehavior : StateMachineBehaviour
     }
 
 
-    public bool isPlayerClose(Transform player, Transform enemy)
+    public bool IsPlayerClose(Transform player, Transform enemy)
     {
         
         return Vector3.Distance(player.position, enemy.position) < detectDistance;
     }
-    public bool isTimeUp()
+    public bool IsTimeUp()
     {
         return timer > waitTime;
     }

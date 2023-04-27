@@ -155,7 +155,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  speed: 5
+  speed: 20
 --- !u!135 &8670844343521004458
 SphereCollider:
   m_ObjectHideFlags: 0

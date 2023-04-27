@@ -18,11 +18,15 @@ public class AttackDetectionScript : MonoBehaviour
     [SerializeField]
     private Transform castPoint;
     private Vector3 difference;
+    private Animator animator;
+    private CharacterController Cc;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;   
+        player = GameObject.FindWithTag("Player").transform;  
+        animator = GetComponent<Animator>();
+        Cc = gameObject.GetComponent<CharacterController>();
     }
     private void OnDrawGizmos()
     {
@@ -34,7 +38,17 @@ public class AttackDetectionScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsInRange())           
+
+        ChecknAttack();
+        
+    }
+
+    private void ChecknAttack()
+    {
+        animator.SetBool("IsChasing", false);
+
+
+        if (IsInRange())
         {
             if (IsInFOV())
             {
@@ -42,14 +56,17 @@ public class AttackDetectionScript : MonoBehaviour
 
                 if (!IsBlocked())
                 {
-                    difference =  transform.position - player.position;  
-                    transform.LookAt(player.position);
-                   transform.Translate(difference * speed * Time.deltaTime);
-                   
+                    animator.SetBool("IsChasing",true);
+                    difference = transform.position - player.position;
+                    transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+                    Cc.Move(new Vector3(difference.x * speed * Time.deltaTime, -9.8f, difference.z * speed * Time.deltaTime));
+
                 }
             }
         }
+        
     }
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<IHealth>() != null && other.CompareTag("Player"))

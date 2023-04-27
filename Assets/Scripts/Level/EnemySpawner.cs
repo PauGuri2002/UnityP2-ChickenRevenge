@@ -9,7 +9,7 @@ public class EnemySpawner : ObjectSpawner
     {
         for(int i = 0; i < enemyCounter; i++)
         {
-            Instantiate(objectPrefabs[Random.Range(0, objectPrefabs.Length)], new Vector3(transform.position.x, player.position.y, transform.position.z),Quaternion.identity);
+            Instantiate(objectPrefabs[Random.Range(0, objectPrefabs.Length)], new Vector3(transform.position.x, 0, transform.position.z),Quaternion.identity);
             yield return new WaitForSeconds(3);
 
         }
