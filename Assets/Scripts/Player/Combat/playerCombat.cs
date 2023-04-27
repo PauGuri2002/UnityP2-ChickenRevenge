@@ -1,22 +1,38 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class playerCombat : MonoBehaviour
 {
+    [SerializeField] private bool godModeDamage; // dev tools
     [SerializeField] private AttackInfo[] attacks;
     private AttackInfo currentAttack;
     [SerializeField] private TextMeshProUGUI attackText;
 
+    [Header("Stamina")]
+    [SerializeField] private int baseStamina = 1000;
+    [SerializeField] private float staminaGainPerSecond = 100;
+    [SerializeField] private HealthBar staminaBar;
+    [HideInInspector] public int currentStamina;
+
     void Start()
     {
-        UpdateAttack(0);
-    }
-    void Update()
-    {
+        foreach (AttackInfo att in attacks)
+        {
+            att.attackScript.InitializeAttack(att.minDamage * (godModeDamage ? 3 : 1), att.maxDamage * (godModeDamage ? 3 : 1), att.cooldown, att.staminaDrain, this);
+        }
 
+        UpdateAttack(0);
+        if (staminaBar != null)
+        {
+            staminaBar.SetBaseHealth(baseStamina);
+            StartCoroutine(RecoverStamina());
+        }
+        currentStamina = baseStamina;
     }
+
     public void OnAttack(InputAction.CallbackContext theAttack)
     {
         if (theAttack.started)
@@ -49,7 +65,30 @@ public class playerCombat : MonoBehaviour
     void UpdateAttack(int index)
     {
         currentAttack = attacks[index];
-        currentAttack.attackScript.StartAttack(attacks[index].minDamage, attacks[index].maxDamage, attacks[index].cooldown);
+        currentAttack.attackScript.StartAttack();
         attackText.text = currentAttack.name;
+    }
+
+    public void UpdateStamina(int value)
+    {
+        if (staminaBar == null) { return; }
+        currentStamina += value;
+        staminaBar.SetHealth(currentStamina);
+    }
+
+    IEnumerator RecoverStamina()
+    {
+        while (true)
+        {
+            if (currentStamina < baseStamina)
+            {
+                UpdateStamina(1);
+            }
+            else
+            {
+                currentStamina = baseStamina;
+            }
+            yield return new WaitForSeconds(1 / staminaGainPerSecond);
+        }
     }
 }

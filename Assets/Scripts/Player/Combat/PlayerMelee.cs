@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMelee : AbstractAttack
 {
     [SerializeField] private float range = 2;
-    [SerializeField] private Animator animator;
+    public Animator animator;
 
     public override void PerformAttack()
     {
@@ -11,7 +11,7 @@ public class PlayerMelee : AbstractAttack
         Invoke(nameof(DoDamage), 0.3f);
     }
 
-    void DoDamage()
+    public virtual void DoDamage()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, range);
         foreach (Collider c in colliders)

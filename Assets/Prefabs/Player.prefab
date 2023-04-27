@@ -368,6 +368,7 @@ MonoBehaviour:
   cooldown: 0.5
   minDamage: 10
   maxDamage: 15
+  staminaDrain: 10
   range: 2
   animator: {fileID: 5457853736291740609}
 --- !u!1 &3857785749920514349
@@ -665,8 +666,10 @@ MonoBehaviour:
   cooldown: 0.5
   minDamage: 10
   maxDamage: 15
-  aoe: 6
+  staminaDrain: 10
+  range: 2
   animator: {fileID: 5457853736291740609}
+  particles: {fileID: 6356098811270752961, guid: 092cad02ea11ca944a7eecd10dbd25b9, type: 3}
 --- !u!1 &6765465592025621348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,6 +1039,7 @@ MonoBehaviour:
   _healthBar: {fileID: 0}
   _baseHealth: 100
   _minHealth: 0
+  godModeHealth: 0
   pushForce: 50
   recoverTime: 0.1
 --- !u!114 &8813540242839300041
@@ -1050,6 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5923e917a846fa04ca5a5c592a438bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  godModeDamage: 0
   attacks:
   - name: Laser Shot
     attackType: 1
@@ -1057,25 +1062,33 @@ MonoBehaviour:
     minDamage: 3
     maxDamage: 5
     cooldown: 0.5
+    staminaDrain: 0
   - name: Egg Launch
     attackType: 1
     attackScript: {fileID: 6829855974766894095}
     minDamage: 15
     maxDamage: 25
     cooldown: 1
+    staminaDrain: 0
   - name: Melee
     attackType: 0
     attackScript: {fileID: 63178779112840565}
     minDamage: 5
     maxDamage: 8
     cooldown: 0.5
+    staminaDrain: 50
   - name: Heavy Melee
     attackType: 0
     attackScript: {fileID: 3821010112541894085}
     minDamage: 10
     maxDamage: 15
     cooldown: 1.5
+    staminaDrain: 100
   attackText: {fileID: 0}
+  baseStamina: 1000
+  staminaGainPerSecond: 50
+  staminaBar: {fileID: 0}
+  currentStamina: 0
 --- !u!1 &7887882441691795610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,6 +1245,7 @@ MonoBehaviour:
   cooldown: 0.5
   minDamage: 10
   maxDamage: 15
+  staminaDrain: 10
   laserRange: 50
   laserDuration: 0.05
 --- !u!1 &7980993774714329684
@@ -1281,6 +1295,7 @@ MonoBehaviour:
   cooldown: 0.5
   minDamage: 10
   maxDamage: 15
+  staminaDrain: 10
   eggPrefab: {fileID: 4413288184132055112, guid: a42884e882bc39449981c99fa058e744, type: 3}
   chickenControl: {fileID: 5079174525167319530}
   eggSpeed: 13

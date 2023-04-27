@@ -7,10 +7,9 @@ public class Raycast : AbstractAttack
     [SerializeField] private float laserRange = 50f;
     [SerializeField] private float laserDuration = 0.05f;
 
-    LineRenderer laserLine; 
-    public override void Start()
+    LineRenderer laserLine;
+    public void Start()
     {
-        base.Start();
         laserLine = GetComponent<LineRenderer>();
     }
     public override void PerformAttack()
@@ -21,7 +20,7 @@ public class Raycast : AbstractAttack
         {
             laserLine.SetPosition(1, hitinfo.point);
             IHealth h = hitinfo.collider.gameObject.GetComponent<IHealth>();
-            if(h != null)
+            if (h != null)
             {
                 h.TakeDamage(Random.Range(minDamage, maxDamage), gameObject);
             }
@@ -33,10 +32,10 @@ public class Raycast : AbstractAttack
 
         StartCoroutine(ShootTime());
     }
-   IEnumerator ShootTime()
-   {
+    IEnumerator ShootTime()
+    {
         laserLine.enabled = true;
         yield return new WaitForSeconds(laserDuration);
         laserLine.enabled = false;
-   }
+    }
 }

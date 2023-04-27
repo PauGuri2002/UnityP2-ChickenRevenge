@@ -9,6 +9,7 @@ public class AttackInfo
     public int minDamage;
     public int maxDamage;
     public float cooldown;
+    public int staminaDrain;
 }
 
 public enum AttackType

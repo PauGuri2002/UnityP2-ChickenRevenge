@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AbstractAttack : MonoBehaviour
@@ -7,21 +5,24 @@ public class AbstractAttack : MonoBehaviour
     [HideInInspector] public float cooldown = 0.5f;
     [HideInInspector] public int minDamage = 10;
     [HideInInspector] public int maxDamage = 15;
+    [HideInInspector] public int staminaDrain = 10;
     private float timeFire;
+    private playerCombat playerCombat;
 
-    public virtual void StartAttack(int _minDamage, int _maxDamage, float _cooldown) {
+    public void InitializeAttack(int _minDamage, int _maxDamage, float _cooldown, int _staminaDrain, playerCombat _playerCombat)
+    {
         cooldown = _cooldown;
         minDamage = _minDamage;
         maxDamage = _maxDamage;
-    }
-    public virtual void PerformAttack() {}
-    public virtual void EndAttack() {}
+        staminaDrain = _staminaDrain;
+        playerCombat = _playerCombat;
 
-    
-    public virtual void Start()
-    {
         timeFire = cooldown;
     }
+
+    public virtual void StartAttack() { }
+    public virtual void PerformAttack() { }
+    public virtual void EndAttack() { }
     public virtual void Update()
     {
         if (cooldown >= timeFire)
@@ -31,10 +32,14 @@ public class AbstractAttack : MonoBehaviour
     }
     public void TryPerformAttack()
     {
-        if(timeFire > cooldown)
+        if (timeFire > cooldown)
         {
             PerformAttack();
             timeFire = 0f;
+            if (staminaDrain > 0)
+            {
+                playerCombat.UpdateStamina(staminaDrain * -1);
+            }
         }
     }
 }

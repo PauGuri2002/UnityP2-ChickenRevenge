@@ -1,19 +1,17 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AbstractHealth : MonoBehaviour, IHealth
 {
-    [SerializeField] private GameObject _healthBar;
+    [SerializeField] private HealthBar _healthBar;
     [SerializeField] private int _baseHealth = 100;
     [SerializeField] private int _minHealth = 0;
     private int _currentHealth;
 
-    public static Action<int, GameObject> OnHit;
+    public static Action<int, HealthBar> OnHit;
 
     //Getters
-    public int GetBaseHealth() 
+    public int GetBaseHealth()
     {
         return _baseHealth;
     }
@@ -30,19 +28,20 @@ public class AbstractHealth : MonoBehaviour, IHealth
     public void SetBaseHealth()
     {
         _currentHealth = _baseHealth;
-        if(_healthBar != null) 
-        { 
-            _healthBar.GetComponent<HealthBar>().SetBaseHealth(_baseHealth); 
+        if (_healthBar != null)
+        {
+            _healthBar.SetBaseHealth(_baseHealth);
         }
     }
 
     public virtual void TakeDamage(int damage, GameObject origin)
     {
         _currentHealth -= damage;
-        if(_healthBar != null) {
+        if (_healthBar != null)
+        {
             OnHit?.Invoke(_currentHealth, _healthBar);
         }
-        
+
         //Debug.Log(_currentHealth);
 
         if (_currentHealth <= _minHealth)

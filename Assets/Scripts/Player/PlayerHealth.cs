@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerHealth : AbstractHealth
 {
     [Header("Damage parameters")]
+    [SerializeField] private bool godModeHealth; // dev tools
     [SerializeField] private float pushForce = 10f;
     [SerializeField] private float recoverTime = 2f;
 
@@ -28,6 +29,8 @@ public class PlayerHealth : AbstractHealth
 
     public override void TakeDamage(int damage, GameObject origin)
     {
+        if (godModeHealth) { return; } // dev tools
+
         base.TakeDamage(damage, origin);
 
         if (origin != null)

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class EggShot : AbstractAttack
 {
@@ -20,9 +17,8 @@ public class EggShot : AbstractAttack
 
     [Header("Egg Destroy")]
     [SerializeField] private float eggLifeTime = 6f;
-    public override void StartAttack(int minDamage, int maxDamage, float cooldown)
+    public override void StartAttack()
     {
-        base.StartAttack(minDamage, maxDamage, cooldown);
         chickenControl.UpdateRotation(180f);
     }
     public override void EndAttack()
@@ -30,7 +26,7 @@ public class EggShot : AbstractAttack
         base.EndAttack();
         chickenControl.UpdateRotation(0f);
     }
-    public override void PerformAttack() 
+    public override void PerformAttack()
     {
         float[] spawnDirection = { 0, 1, -1 };
         if (eggCount < eggMaxCount)
@@ -45,14 +41,14 @@ public class EggShot : AbstractAttack
         }
 
         for (int i = 0; i < eggNumberSpawn; i++)
-        {        
+        {
             var egg = Instantiate(eggPrefab, transform.position, transform.rotation);
             egg.GetComponent<Rigidbody>().velocity = -1 * eggSpeed * transform.forward + transform.up * eggParabolicShoot + transform.right * spawnDirection[i];
 
             eggDMG dmgScript = egg.GetComponent<eggDMG>();
             dmgScript.minDamage = minDamage;
             dmgScript.maxDamage = maxDamage;
-            
+
             Destroy(egg, eggLifeTime);
         }
     }
