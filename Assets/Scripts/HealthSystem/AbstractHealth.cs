@@ -40,7 +40,10 @@ public class AbstractHealth : MonoBehaviour, IHealth
     public virtual void TakeDamage(int damage, GameObject origin)
     {
         _currentHealth -= damage;
-        OnHit?.Invoke(_currentHealth, _healthBar);
+        if(_healthBar != null) {
+            OnHit?.Invoke(_currentHealth, _healthBar);
+        }
+        
         //Debug.Log(_currentHealth);
 
         if (_currentHealth <= _minHealth)
