@@ -15,6 +15,7 @@ public class chickenControl : MonoBehaviour
     [HideInInspector] public Vector3 externalForces = Vector3.zero;
 
     private Vector2 move = new Vector2(0, 0);
+    private Vector3 horizontalMove = Vector3.zero;
 
     private bool isRunning;
     [HideInInspector] public bool movementEnabled = true;
@@ -153,15 +154,14 @@ public class chickenControl : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        Vector3 horizontalMove = forward * move.y + right * move.x;
+        horizontalMove = forward * move.y + right * move.x;
 
         Vector3 hvMove = new Vector3(horizontalMove.x * speed, verticalMove, horizontalMove.z * speed);
         characterController.Move((hvMove * dashPlayerControll + externalForces) * Time.deltaTime);
 
-        modelKFC.transform.rotation = Quaternion.Euler(0, rotationChicken, 0);
         if (horizontalMove.magnitude > 0) 
-        { 
-            modelKFC.transform.rotation *= Quaternion.LookRotation(horizontalMove);
+        {
+            UpdateRotation(rotationChicken);
         }
 
         // reset all properties when grounded
@@ -169,5 +169,11 @@ public class chickenControl : MonoBehaviour
         {
             verticalMove = 0;
         }
+    }
+
+    public void UpdateRotation(float newRotation)
+    {
+        rotationChicken = newRotation;
+        modelKFC.transform.rotation = Quaternion.LookRotation(horizontalMove) * Quaternion.Euler(0, rotationChicken, 0);
     }
 }

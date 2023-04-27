@@ -23,12 +23,12 @@ public class EggShot : AbstractAttack
     public override void StartAttack()
     {
         base.StartAttack();
-        chickenControl.rotationChicken = 180f;
+        chickenControl.UpdateRotation(180f);
     }
     public override void EndAttack()
     {
         base.EndAttack();
-        chickenControl.rotationChicken = 0f;
+        chickenControl.UpdateRotation(0f);
     }
     public override void PerformAttack() 
     {
