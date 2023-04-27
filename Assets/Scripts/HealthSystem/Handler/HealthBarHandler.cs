@@ -17,6 +17,7 @@ public class HealthBarHandler : MonoBehaviour
     private void Handle(int health, GameObject origin)
     {
         HealthBar healthBar = origin.transform.gameObject.GetComponent<HealthBar>();
+        if (healthBar == null) return;
         Debug.Log(healthBar.name);
         healthBar.SetHealth(health);
     }
