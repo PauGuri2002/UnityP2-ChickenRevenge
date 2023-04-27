@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthBarHandler : MonoBehaviour
@@ -18,7 +16,7 @@ public class HealthBarHandler : MonoBehaviour
     {
         HealthBar healthBar = origin.transform.gameObject.GetComponent<HealthBar>();
         if (healthBar == null) return;
-        Debug.Log(healthBar.name);
+        //Debug.Log(healthBar.name);
         healthBar.SetHealth(health);
     }
 }

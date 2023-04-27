@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a622b5cb1e1a86b48941a6351d058bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgEggDone: 20
+  minDamage: 10
+  maxDamage: 15
   aoeRadius: 5
-  particles: {fileID: 6356098811270752961, guid: 092cad02ea11ca944a7eecd10dbd25b9, type: 3}
+  particles: {fileID: 1680673278240577527, guid: 236eaec5169c1cc4f8093656b4f49d7b, type: 3}

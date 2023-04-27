@@ -1,19 +1,19 @@
 using UnityEngine;
 
-public class PlayerMelee : AbstractAttack
+public class PlayerHeavyMelee : AbstractAttack
 {
-    [SerializeField] private float range = 2;
+    [SerializeField] private float aoe = 6;
     [SerializeField] private Animator animator;
 
     public override void PerformAttack()
     {
-        animator.SetTrigger("melee");
-        Invoke(nameof(DoDamage), 0.3f);
+        animator.SetTrigger("heavy_melee");
+        Invoke(nameof(DoDamage), 0.5f);
     }
 
     void DoDamage()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, range);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, aoe);
         foreach (Collider c in colliders)
         {
             if (c.gameObject.GetComponent<IHealth>() != null && !c.gameObject.CompareTag("Player"))
