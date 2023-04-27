@@ -16,6 +16,7 @@ public class eggDMG : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Debug.Log(other.name);
         if (!other.gameObject.CompareTag("Player") && other.GetComponent<eggDMG>() == null)
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, aoeRadius);

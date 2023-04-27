@@ -43,7 +43,7 @@ public class WonderBehaviour : StateMachineBehaviour
         bool isPlayer = isPlayerClose(player, animator.transform);
         if (!animator.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("ALO");
+            //Debug.Log("ALO");
             animator.SetBool("IsChasing", isPlayer);
             animator.SetBool("IsPatrolling", !isPlayer);
         }
