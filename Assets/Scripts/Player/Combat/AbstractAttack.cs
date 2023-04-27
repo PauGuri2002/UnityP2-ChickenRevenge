@@ -2,31 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* SHOULD BE AN INTERFACE, BUT UNITY DOESN'T SUPPORT SERIALIZING INTERFACES */
 public class AbstractAttack : MonoBehaviour
 {
-    public virtual void StartAttack() {}
+    [HideInInspector] public float cooldown = 0.5f;
+    [HideInInspector] public int minDamage = 10;
+    [HideInInspector] public int maxDamage = 15;
+    private float timeFire;
+
+    public virtual void StartAttack(int _minDamage, int _maxDamage, float _cooldown) {
+        cooldown = _cooldown;
+        minDamage = _minDamage;
+        maxDamage = _maxDamage;
+    }
     public virtual void PerformAttack() {}
     public virtual void EndAttack() {}
 
-    [Header("TimerCD")]
-    [SerializeField] private float fireRate = 0.5f;
-    private float timeFire;
-
+    
     public virtual void Start()
     {
-        timeFire = fireRate;
+        timeFire = cooldown;
     }
     public virtual void Update()
     {
-        if (fireRate >= timeFire)
+        if (cooldown >= timeFire)
         {
             timeFire += Time.deltaTime;
         }
     }
     public void TryPerformAttack()
     {
-        if(timeFire > fireRate)
+        if(timeFire > cooldown)
         {
             PerformAttack();
             timeFire = 0f;

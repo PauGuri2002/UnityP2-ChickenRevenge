@@ -4,7 +4,6 @@ using UnityEngine;
 public class Raycast : AbstractAttack
 {
     [Header("Laser Weapon Variables")]
-    [SerializeField] private int dmgRaycastDone;
     [SerializeField] private float laserRange = 50f;
     [SerializeField] private float laserDuration = 0.05f;
 
@@ -24,7 +23,7 @@ public class Raycast : AbstractAttack
             IHealth h = hitinfo.collider.gameObject.GetComponent<IHealth>();
             if(h != null)
             {
-                h.TakeDamage(dmgRaycastDone, gameObject);
+                h.TakeDamage(Random.Range(minDamage, maxDamage), gameObject);
             }
         }
         else

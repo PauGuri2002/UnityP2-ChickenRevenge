@@ -19,9 +19,9 @@ public class Boss : AbstractHealth
 
     public override void TakeDamage(int damage, GameObject origin)
     {
-        base.TakeDamage(damage, origin);
+        base.TakeDamage(currentPhase > 1 ? (int) Mathf.Round(damage / 1.5f) : damage, origin);
 
-        if (GetCurrentHealth() < phasesHealthPercent[currentPhase])
+        if (currentPhase < phasesHealthPercent.Length && GetCurrentHealth() < phasesHealthPercent[currentPhase])
         {
             StartPhase();
             currentPhase++;

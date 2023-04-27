@@ -20,9 +20,9 @@ public class EggShot : AbstractAttack
 
     [Header("Egg Destroy")]
     [SerializeField] private float eggLifeTime = 6f;
-    public override void StartAttack()
+    public override void StartAttack(int minDamage, int maxDamage, float cooldown)
     {
-        base.StartAttack();
+        base.StartAttack(minDamage, maxDamage, cooldown);
         chickenControl.UpdateRotation(180f);
     }
     public override void EndAttack()
@@ -48,6 +48,11 @@ public class EggShot : AbstractAttack
         {        
             var egg = Instantiate(eggPrefab, transform.position, transform.rotation);
             egg.GetComponent<Rigidbody>().velocity = -1 * eggSpeed * transform.forward + transform.up * eggParabolicShoot + transform.right * spawnDirection[i];
+
+            eggDMG dmgScript = egg.GetComponent<eggDMG>();
+            dmgScript.minDamage = minDamage;
+            dmgScript.maxDamage = maxDamage;
+            
             Destroy(egg, eggLifeTime);
         }
     }
