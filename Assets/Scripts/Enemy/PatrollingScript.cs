@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +10,13 @@ public class PatrollingScript : MonoBehaviour
     public float minDistance = 15f;
     [HideInInspector] public float speed = 0;
     private bool isReturning;
+    private Quaternion ogRotation;
     private Vector3 currentTargetPosition => wayPoints[currentWayPoint].position;
 
-
+    private void Start()
+    {
+        ogRotation = transform.rotation;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -19,7 +24,16 @@ public class PatrollingScript : MonoBehaviour
         {
             ChangeWayPoint();
         }
+        CheckRb();
         Move();
+    }
+
+    private void CheckRb()
+    {
+        if (transform.rotation.x != 0 && transform.rotation.z != 0)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation,ogRotation,Time.deltaTime*speed);
+        }
     }
 
     //Checkea si está cerca o encima del wayPoint

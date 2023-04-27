@@ -431,6 +431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPrefabs:
   - {fileID: 1998942852648348, guid: f0c66ffbe2165584e85d6087173c1c49, type: 3}
+  - {fileID: 7887794087420574048, guid: 3b5fbcd540f0e574383e0826183becf2, type: 3}
   spawnerSize: {x: 0, y: 0}
   spawnTimeMin: 0.1
   spawnTimeMax: 0.5
