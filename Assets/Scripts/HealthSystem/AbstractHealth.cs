@@ -5,12 +5,9 @@ using UnityEngine;
 
 public class AbstractHealth : MonoBehaviour, IHealth
 {
-    [SerializeField]
-    private GameObject _healthBar;
-    [SerializeField]
-    private int _baseHealth = 100;
-    [SerializeField]
-    private int _minHealth = 0;
+    [SerializeField] private GameObject _healthBar;
+    [SerializeField] private int _baseHealth = 100;
+    [SerializeField] private int _minHealth = 0;
 
     private int _currentHealth;
 
@@ -44,6 +41,7 @@ public class AbstractHealth : MonoBehaviour, IHealth
     {
         _currentHealth -= damage;
         OnHit?.Invoke(_currentHealth, _healthBar);
+        //Debug.Log(_currentHealth);
 
         if (_currentHealth <= _minHealth)
         {

@@ -13,7 +13,6 @@ public class EggShot : AbstractAttack
     [SerializeField] private float eggSpeed = 10f;
     [SerializeField] private float eggParabolicShoot = 15f;
 
-
     [Header("Egg Hidden Secret")]
     [SerializeField] private float eggMaxCount = 5;
     [SerializeField] private int eggNumberSpawn = 3;

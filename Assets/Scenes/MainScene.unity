@@ -845,9 +845,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 1381259537}
-  _baseHealth: 100
+  _baseHealth: 200
   _minHealth: 0
-  phasesHealthPercent: 640000004300000022000000
+  phasesHealthPercent: c80000007800000032000000
+  phasesPatrollingSpeed:
+  - 10
+  - 20
+  - 30
   knifeSpawner: {fileID: 450980886}
   enemySpawner: {fileID: 450980888}
   modelRenderer: {fileID: 417848320}
@@ -947,7 +951,7 @@ MonoBehaviour:
   - {fileID: 1641321846}
   - {fileID: 2089201874}
   minDistance: 20
-  speed: 10
+  speed: 0
 --- !u!1 &643601465
 GameObject:
   m_ObjectHideFlags: 0

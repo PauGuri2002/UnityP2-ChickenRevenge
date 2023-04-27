@@ -8,7 +8,7 @@ public class PatrollingScript : MonoBehaviour
     public Transform[] wayPoints; 
     private int currentWayPoint = 0;
     public float minDistance = 15f;
-    public float speed = 5;
+    [HideInInspector] public float speed = 0;
     private bool isReturning;
     private Quaternion ogRotation;
     private Vector3 currentTargetPosition => wayPoints[currentWayPoint].position;

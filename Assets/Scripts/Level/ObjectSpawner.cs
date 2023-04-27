@@ -67,6 +67,14 @@ public class ObjectSpawner : MonoBehaviour
         }
     }
 
+    public void DestroyAll()
+    {
+        foreach(GameObject obj in spawnedObjects)
+        {
+            Destroy(obj);
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
