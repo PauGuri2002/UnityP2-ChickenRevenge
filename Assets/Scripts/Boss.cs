@@ -9,9 +9,6 @@ public class Boss : AbstractHealth
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private Renderer modelRenderer;
 
-
-
-
     public override void TakeDamage(int damage, GameObject origin)
     {
         base.TakeDamage(damage, origin);

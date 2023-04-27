@@ -5,13 +5,13 @@ using UnityEngine;
 public class eggDMG : MonoBehaviour
 {
     [Header("Egg DMG")]
-    //[SerializeField] private int dmgEggDone = 20;
     [SerializeField] private int eggMaxDmg = 15;
     [SerializeField] private int eggMinDmg = 10;
-    [SerializeField] private float aoeRadius = 2;
-    //[SerializeField] SphereCollider hitPoint;
-    //[SerializeField] SphereCollider aoePoint;
 
+    [Header("AOE Radius")]
+    [SerializeField] private float aoeRadius = 2;
+
+    [Header("Particles")]
     [SerializeField] private GameObject particles;
 
     private void OnTriggerEnter(Collider other)
