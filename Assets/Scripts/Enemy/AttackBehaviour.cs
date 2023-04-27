@@ -29,14 +29,7 @@ public class AttackBehaviour : StateMachineBehaviour
     }
     private void Execute(Animator animator)
     {
-        if (animator.GetBool("IsChasing"))
-        {
-            script.enabled = true;
-        }
-        else
-        {
-            script.enabled = false;
-        }
+
 
     }
     

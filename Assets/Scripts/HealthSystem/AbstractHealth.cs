@@ -8,7 +8,6 @@ public class AbstractHealth : MonoBehaviour, IHealth
     [SerializeField] private GameObject _healthBar;
     [SerializeField] private int _baseHealth = 100;
     [SerializeField] private int _minHealth = 0;
-
     private int _currentHealth;
 
     public static Action<int, GameObject> OnHit;

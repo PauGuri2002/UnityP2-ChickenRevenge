@@ -20,6 +20,7 @@ public class AttackDetectionScript : MonoBehaviour
     private Vector3 difference;
     private Animator animator;
     private CharacterController Cc;
+    [SerializeField] private GameObject mano;
 
     // Start is called before the first frame update
     void Start()
@@ -46,8 +47,7 @@ public class AttackDetectionScript : MonoBehaviour
     private void ChecknAttack()
     {
         animator.SetBool("IsChasing", false);
-
-
+        mano.GetComponent<BoxCollider>().enabled = false;
         if (IsInRange())
         {
             if (IsInFOV())
@@ -56,6 +56,7 @@ public class AttackDetectionScript : MonoBehaviour
 
                 if (!IsBlocked())
                 {
+                    mano.GetComponent<BoxCollider>().enabled = true;
                     animator.SetBool("IsChasing",true);
                     difference = transform.position - player.position;
                     transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
@@ -64,16 +65,17 @@ public class AttackDetectionScript : MonoBehaviour
                 }
             }
         }
+        else if(gameObject.GetComponent<EnemyHealth>().damaged)
+        {
+            difference = player.position - transform.position  ;
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+            Cc.Move(new Vector3(difference.x * (speed / 10) * Time.deltaTime, -9.8f, difference.z * speed * Time.deltaTime));
+            
+        }
         
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<IHealth>() != null && other.CompareTag("Player"))
-        {
-            other.GetComponent<IHealth>().TakeDamage(3, this.gameObject);
-        }
-    }
+
     private bool IsInFOV()
     {
         float halfFOV = FOV/2;

@@ -2537,6 +2537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4290276677156508146}
   - component: {fileID: 7570224955070071354}
+  - component: {fileID: 3241947966642894702}
   m_Layer: 0
   m_Name: mixamorig:LeftHand
   m_TagString: Untagged
@@ -2572,11 +2573,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6906052369769205245}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.13, z: 0}
+--- !u!114 &3241947966642894702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6906052369769205245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d3d89b5420a7644b5d8dc0f2034c6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
 --- !u!1 &6985893851275590784
 GameObject:
   m_ObjectHideFlags: 0
@@ -2940,6 +2954,7 @@ MonoBehaviour:
   minDistance: 7
   speed: 4
   castPoint: {fileID: 7040950581305678575}
+  mano: {fileID: 6906052369769205245}
 --- !u!114 &7040950580567233681
 MonoBehaviour:
   m_ObjectHideFlags: 0
