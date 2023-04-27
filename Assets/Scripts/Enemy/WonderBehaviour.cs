@@ -7,7 +7,7 @@ public class WonderBehaviour : StateMachineBehaviour
     Transform player;
     private PatrollingScript_EdgeDetection script;
     public List<Transform> wayPoints;
-    public float detectDistance = 4;
+    public float detectDistance = 7;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -41,9 +41,8 @@ public class WonderBehaviour : StateMachineBehaviour
     private void CheckTriggers(Animator animator)
     {
         bool isPlayer = isPlayerClose(player, animator.transform);
-        if (!animator.gameObject.CompareTag("Enemy"))
+        if (animator.gameObject.CompareTag("ShieldEnemy"))
         {
-            //Debug.Log("ALO");
             animator.SetBool("IsChasing", isPlayer);
             animator.SetBool("IsPatrolling", !isPlayer);
         }

@@ -29,14 +29,7 @@ public class AttackBehaviour : StateMachineBehaviour
     }
     private void Execute(Animator animator)
     {
-        if (animator.GetBool("IsChasing"))
-        {
-            script.enabled = true;
-        }
-        else
-        {
-            script.enabled = false;
-        }
+
 
     }
     
@@ -44,7 +37,6 @@ public class AttackBehaviour : StateMachineBehaviour
     private void CheckTriggers(Animator animator)
     {
         bool isPlayer = isPlayerClose(player, animator.transform);
-        animator.SetBool("IsChasing", isPlayer);
         animator.SetBool("IsPatrolling", !isPlayer);
     }
     public bool isPlayerClose(Transform player, Transform enemy)

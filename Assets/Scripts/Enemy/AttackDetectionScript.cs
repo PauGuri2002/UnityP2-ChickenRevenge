@@ -18,11 +18,16 @@ public class AttackDetectionScript : MonoBehaviour
     [SerializeField]
     private Transform castPoint;
     private Vector3 difference;
+    private Animator animator;
+    private CharacterController Cc;
+    [SerializeField] private GameObject mano;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;   
+        player = GameObject.FindWithTag("Player").transform;  
+        animator = GetComponent<Animator>();
+        Cc = gameObject.GetComponent<CharacterController>();
     }
     private void OnDrawGizmos()
     {
@@ -34,7 +39,16 @@ public class AttackDetectionScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsInRange())           
+
+        ChecknAttack();
+        
+    }
+
+    private void ChecknAttack()
+    {
+        animator.SetBool("IsChasing", false);
+        mano.GetComponent<BoxCollider>().enabled = false;
+        if (IsInRange())
         {
             if (IsInFOV())
             {
@@ -42,21 +56,26 @@ public class AttackDetectionScript : MonoBehaviour
 
                 if (!IsBlocked())
                 {
-                    difference =  transform.position - player.position;  
-                    transform.LookAt(player.position);
-                   transform.Translate(difference * speed * Time.deltaTime);
-                   
+                    mano.GetComponent<BoxCollider>().enabled = true;
+                    animator.SetBool("IsChasing",true);
+                    difference = transform.position - player.position;
+                    transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+                    Cc.Move(new Vector3(difference.x * speed * Time.deltaTime, -9.8f, difference.z * speed * Time.deltaTime));
+
                 }
             }
         }
-    }
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<IHealth>() != null && other.CompareTag("Player"))
+        else if(gameObject.GetComponent<EnemyHealth>().damaged)
         {
-            other.GetComponent<IHealth>().TakeDamage(3, this.gameObject);
+            difference = player.position - transform.position  ;
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+            Cc.Move(new Vector3(difference.x * (speed / 10) * Time.deltaTime, -9.8f, difference.z * speed * Time.deltaTime));
+            
         }
+        
     }
+
+
     private bool IsInFOV()
     {
         float halfFOV = FOV/2;

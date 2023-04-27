@@ -13,7 +13,14 @@ public class PatrollingScript_EdgeDetection : MonoBehaviour
     private float maxDistance = 2;
 
     public float speed = 5;
+    private CharacterController Cc;
 
+
+    private void Start()
+    {
+        Cc = gameObject.GetComponent<CharacterController>();
+
+    }
     void Update()
     {
         if (EdgeDetected())
@@ -41,7 +48,15 @@ public class PatrollingScript_EdgeDetection : MonoBehaviour
     }
     private void Move()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        if (Cc != null)
+        {
+            Cc.Move(Vector3.down + transform.forward * speed * Time.deltaTime);
+        }
+        else
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+
+        }
 
     }
 
