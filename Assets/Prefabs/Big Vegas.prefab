@@ -1772,7 +1772,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2198785634244137823, guid: 399337955bf3d9a4291392aaf330c3dd, type: 3}
+  - {fileID: 2100000, guid: 9c4e4293c98e0b54a902e21d4629ae34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2987,6 +2987,8 @@ MonoBehaviour:
   _healthBar: {fileID: 0}
   _baseHealth: 30
   _minHealth: 0
+  damaged: 0
+  deathParticles: {fileID: 342896307634262394, guid: 214eee38d3a12df48a74db48ade5546a, type: 3}
 --- !u!143 &6748380639534272142
 CharacterController:
   m_ObjectHideFlags: 0

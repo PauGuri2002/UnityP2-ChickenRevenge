@@ -185,6 +185,8 @@ MonoBehaviour:
   _healthBar: {fileID: 0}
   _baseHealth: 10
   _minHealth: 0
+  damaged: 0
+  deathParticles: {fileID: 342896307634262394, guid: 214eee38d3a12df48a74db48ade5546a, type: 3}
 --- !u!114 &-2995423973886299751
 MonoBehaviour:
   m_ObjectHideFlags: 0

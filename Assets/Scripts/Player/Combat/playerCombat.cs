@@ -25,12 +25,14 @@ public class playerCombat : MonoBehaviour
         }
 
         UpdateAttack(0);
+
         if (staminaBar != null)
         {
+            currentStamina = baseStamina;
             staminaBar.SetBaseHealth(baseStamina);
             StartCoroutine(RecoverStamina());
         }
-        currentStamina = baseStamina;
+
     }
 
     public void OnAttack(InputAction.CallbackContext theAttack)
