@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemySpawner : ObjectSpawner
 {
-    public int enemyCounter = 20;
+    public int enemyCounter = 1;
     public override IEnumerator SpawnObject()
     {
         for(int i = 0; i < enemyCounter; i++)
         {
-            Instantiate(objectPrefabs[Random.Range(0, objectPrefabs.Length - 1)], new Vector3(transform.position.x, player.position.y, transform.position.z),Quaternion.identity);
+            Instantiate(objectPrefabs[Random.Range(0, objectPrefabs.Length)], new Vector3(transform.position.x, player.position.y, transform.position.z),Quaternion.identity);
             yield return new WaitForSeconds(3);
 
         }

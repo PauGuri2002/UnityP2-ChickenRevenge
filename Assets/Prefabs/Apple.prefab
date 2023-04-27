@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5962846501968131499}
   - component: {fileID: 1555983022983130051}
   - component: {fileID: 88116650238796879}
-  - component: {fileID: 835923191938958739}
   - component: {fileID: 1915444222709464286}
   - component: {fileID: 8670844343521004458}
   - component: {fileID: 4438971441622678903}
@@ -130,7 +129,7 @@ Animator:
   m_GameObject: {fileID: 1998942852648348}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ea4afa14373fbc241a12abcf2cebb434, type: 2}
+  m_Controller: {fileID: 9100000, guid: 61b26cbf5c52c9e4498787ce0f1f496b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -140,21 +139,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &835923191938958739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998942852648348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d3602555bce01c408107b9213fb5de0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minDistance: 7
-  speed: 4
-  castPoint: {fileID: 2813335793967934668}
 --- !u!114 &1915444222709464286
 MonoBehaviour:
   m_ObjectHideFlags: 0

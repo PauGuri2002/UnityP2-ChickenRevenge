@@ -26,7 +26,11 @@ public class IdleBehavior : StateMachineBehaviour
     private void CheckTriggers(Animator animator)
     {
         bool isPlayer = isPlayerClose(player, animator.transform);
-        animator.SetBool("IsChasing", isPlayer);
+        if (!animator.gameObject.CompareTag("Enemy"))
+        {
+            animator.SetBool("IsChasing", isPlayer);
+
+        }
 
         bool timeUp = isTimeUp();
         animator.SetBool("IsPatrolling", timeUp);
