@@ -6,12 +6,14 @@ using UnityEngine.InputSystem;
 
 public class playerCombat : MonoBehaviour
 {
-    [SerializeField] private AbstractAttack[] attacks;
+    [SerializeField] private AttackInfo[] attacks;
     private AbstractAttack currentAttack;
 
     void Start()
     {
-        currentAttack = attacks[0];
+        currentAttack = attacks[0].attack;
+        currentAttack.StartAttack(attacks[0].minDamage, attacks[0].maxDamage, attacks[0].cooldown);
+        Debug.Log(currentAttack);
     }
     void Update()
     {
@@ -41,8 +43,8 @@ public class playerCombat : MonoBehaviour
             {
                 newIndex = 0;
             }
-            currentAttack = attacks[newIndex];
-            currentAttack.StartAttack();
+            currentAttack = attacks[newIndex].attack;
+            currentAttack.StartAttack(attacks[newIndex].minDamage, attacks[newIndex].maxDamage, attacks[newIndex].cooldown);
 
             Debug.Log("Current attack: " + newIndex);
         }

@@ -21,7 +21,7 @@ public class Boss : AbstractHealth
     {
         base.TakeDamage(damage, origin);
 
-        if (GetCurrentHealth() < phasesHealthPercent[currentPhase])
+        if (currentPhase < phasesHealthPercent.Length && GetCurrentHealth() < phasesHealthPercent[currentPhase])
         {
             StartPhase();
             currentPhase++;

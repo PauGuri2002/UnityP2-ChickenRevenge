@@ -5,8 +5,8 @@ using UnityEngine;
 public class eggDMG : MonoBehaviour
 {
     [Header("Egg DMG")]
-    [SerializeField] private int eggMaxDmg = 15;
-    [SerializeField] private int eggMinDmg = 10;
+    [HideInInspector] public int minDamage = 10;
+    [HideInInspector] public int maxDamage = 15;
 
     [Header("AOE Radius")]
     [SerializeField] private float aoeRadius = 2;
@@ -24,7 +24,7 @@ public class eggDMG : MonoBehaviour
             {
                 if (c.gameObject.GetComponent<IHealth>() != null)
                 {
-                    c.gameObject.GetComponent<IHealth>().TakeDamage(Random.Range(eggMinDmg, eggMaxDmg), gameObject);
+                    c.gameObject.GetComponent<IHealth>().TakeDamage(Random.Range(minDamage, maxDamage), gameObject);
                 }
             }
             Instantiate(particles, transform.position, transform.rotation);

@@ -3779,6 +3779,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2019702001}
+    - target: {fileID: 6937351843554132753, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7565839162051440814, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
       propertyPath: m_Name
       value: Player
