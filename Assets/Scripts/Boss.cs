@@ -15,6 +15,7 @@ public class Boss : AbstractHealth
     private void OnEnable()
     {
         patrollingScript = GetComponent<PatrollingScript>();
+        ChangeColor(Color.green);
     }
 
     public override void TakeDamage(int damage, GameObject origin)
@@ -30,6 +31,7 @@ public class Boss : AbstractHealth
 
     void StartPhase()
     {
+        Debug.Log(currentPhase);
         switch (currentPhase)
         {
             case 0:

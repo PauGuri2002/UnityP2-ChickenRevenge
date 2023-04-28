@@ -155,7 +155,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 634303637}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &118544408
 CapsuleCollider:
@@ -1031,7 +1031,7 @@ MonoBehaviour:
   - 30
   knifeSpawner: {fileID: 450980886}
   enemySpawner: {fileID: 450980888}
-  modelRenderer: {fileID: 2080625337}
+  modelRenderer: {fileID: 1248695363}
   _animator: {fileID: 634303639}
 --- !u!136 &634303634
 CapsuleCollider:
@@ -1054,7 +1054,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634303632}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1066,8 +1066,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1109,8 +1108,8 @@ Transform:
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2080625336}
   - {fileID: 118544407}
+  - {fileID: 2080625336}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1880,7 +1879,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3ba8ca1807af66a47906f8f77413e81e, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ba8ca1807af66a47906f8f77413e81e, type: 3}
       propertyPath: m_LocalScale.x
@@ -1934,6 +1933,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6937764168000476152, guid: 3ba8ca1807af66a47906f8f77413e81e, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6937764168000476152, guid: 3ba8ca1807af66a47906f8f77413e81e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43046b2b9e678d7409e755cdf5838d64, type: 2}
     - target: {fileID: 919132149155446097, guid: 3ba8ca1807af66a47906f8f77413e81e, type: 3}
       propertyPath: m_Name
       value: chef_lowpoly_NO_Ojos
@@ -2425,6 +2432,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1181765614}
   m_CullTransparentMesh: 1
+--- !u!23 &1248695363 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6937764168000476152, guid: 3ba8ca1807af66a47906f8f77413e81e, type: 3}
+  m_PrefabInstance: {fileID: 1033525431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1275695746
 GameObject:
   m_ObjectHideFlags: 0
@@ -4120,8 +4132,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
