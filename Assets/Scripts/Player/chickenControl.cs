@@ -32,7 +32,7 @@ public class chickenControl : MonoBehaviour
     [SerializeField] private GameObject modelKFC;
 
     [Header("Player Animator")]
-    [SerializeField] private Animator _playerAnimator;
+    [SerializeField] public Animator _playerAnimator;
 
 
     [Header("Player Rotation")]

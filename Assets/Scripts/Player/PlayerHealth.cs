@@ -43,8 +43,10 @@ public class PlayerHealth : AbstractHealth
 
     public override void Die()
     {
-        base.Die();
 
+        Animator playerAnimator = GetComponent<chickenControl>()._playerAnimator;
+
+        playerAnimator.SetBool("die", true);
         characterController.enabled = false;
         transform.position = respawnPos;
         characterController.enabled = true;

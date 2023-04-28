@@ -14,8 +14,11 @@ public class HealthBarHandler : MonoBehaviour
 
     private void Handle(int health, HealthBar healthBar)
     {
-        if (healthBar == null) return;
-        //Debug.Log(healthBar.name);
+        if (healthBar == null) 
+        {
+            return;
+        }
+        
         healthBar.SetHealth(health);
     }
 }
