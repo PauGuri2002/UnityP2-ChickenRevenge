@@ -9,7 +9,7 @@ public class Boss : AbstractHealth
     [SerializeField] private ObjectSpawner knifeSpawner;
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private Renderer modelRenderer;
-
+    [SerializeField] private Animator _animator;
     private PatrollingScript patrollingScript;
 
     private void OnEnable()
@@ -33,23 +33,47 @@ public class Boss : AbstractHealth
         switch (currentPhase)
         {
             case 0:
-                knifeSpawner.ActivateSpawner();
-                ChangeColor(Color.green);
-                patrollingScript.speed = phasesPatrollingSpeed[0];
+                FirstPhase();
                 break;
             case 1:
-                knifeSpawner.DeactivateSpawner();
-                knifeSpawner.DestroyAll();
-                enemySpawner.ActivateSpawner();
-                ChangeColor(Color.yellow);
-                patrollingScript.speed = phasesPatrollingSpeed[1];
+                SecondPhase();
                 break;
             case 2:
-                knifeSpawner.ActivateSpawner();
-                ChangeColor(Color.red);
-                patrollingScript.speed = phasesPatrollingSpeed[2];
+                ThirdPhase();
                 break;
         }
+    }
+
+    private void FirstPhase() 
+    {
+        knifeSpawner.ActivateSpawner();
+        ChangeColor(Color.green);
+        SetPhasePatrollingSpeed();
+        _animator.SetInteger("Phase", currentPhase);
+
+    }
+
+    private void SecondPhase() 
+    {
+        knifeSpawner.DeactivateSpawner();
+        knifeSpawner.DestroyAll();
+        enemySpawner.ActivateSpawner();
+        ChangeColor(Color.yellow);
+        SetPhasePatrollingSpeed();
+        _animator.SetInteger("Phase", currentPhase);
+    }
+
+    private void ThirdPhase()
+    {
+        knifeSpawner.ActivateSpawner();
+        ChangeColor(Color.red);
+        SetPhasePatrollingSpeed();
+        _animator.SetInteger("Phase", currentPhase);
+    }
+
+    private void SetPhasePatrollingSpeed() 
+    {
+        patrollingScript.speed = phasesPatrollingSpeed[currentPhase];
     }
 
     public override void Die()
@@ -59,6 +83,7 @@ public class Boss : AbstractHealth
         knifeSpawner.DestroyAll();
         ChangeColor(Color.black);
         patrollingScript.speed = 0;
+        _animator.SetBool("die", true);
     }
 
     void ChangeColor(Color color)

@@ -1001,6 +1001,7 @@ GameObject:
   - component: {fileID: 634303634}
   - component: {fileID: 634303633}
   - component: {fileID: 634303638}
+  - component: {fileID: 634303639}
   m_Layer: 0
   m_Name: EvilCook
   m_TagString: Untagged
@@ -1030,7 +1031,8 @@ MonoBehaviour:
   - 30
   knifeSpawner: {fileID: 450980886}
   enemySpawner: {fileID: 450980888}
-  modelRenderer: {fileID: 0}
+  modelRenderer: {fileID: 2080625337}
+  _animator: {fileID: 634303639}
 --- !u!136 &634303634
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1052,7 +1054,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634303632}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1129,6 +1131,26 @@ MonoBehaviour:
   - {fileID: 2089201874}
   minDistance: 20
   speed: 0
+--- !u!95 &634303639
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634303632}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 914d901a69f5b7e4c81fa883d97154df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &643601465
 GameObject:
   m_ObjectHideFlags: 0
