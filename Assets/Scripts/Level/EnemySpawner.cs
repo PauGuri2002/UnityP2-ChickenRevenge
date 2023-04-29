@@ -1,34 +1,59 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : ObjectSpawner
 {
-    public int enemyCounter = 20;
-    private bool roundFinished = false;
-    private int wave = 0;
-    private int waves = 2;
+    [SerializeField] private int enemyPerWave = 20;
+    [SerializeField] private Boss bossScript;
+    private int wave = -1;
+
+    public override void ActivateSpawner()
+    {
+        AbstractHealth.OnDie += RegisterDeath;
+        Boss.OnInvincibilityStart += StartWave;
+    }
+
+    public override void DeactivateSpawner()
+    {
+        base.DeactivateSpawner();
+        AbstractHealth.OnDie -= RegisterDeath;
+        Boss.OnInvincibilityStart -= StartWave;
+    }
+
     public override IEnumerator SpawnObject()
     {
-        roundFinished = false;   
-        while (!roundFinished)
+        for (int count = 0; count < enemyPerWave; count++)
         {
-            for(int i=0; i<waves; i++) 
-            {
-                for (int z = 0; z < enemyCounter; z++)
-                {
-                    Instantiate(objectPrefabs[wave], new Vector3(transform.position.x, 0, transform.position.z), Quaternion.identity);
-                    yield return new WaitForSeconds(3);
+            Vector3 position = transform.position + new Vector3(Random.Range(-(spawnerSize.x / 2), spawnerSize.x / 2), 0, Random.Range(-(spawnerSize.y / 2), spawnerSize.y / 2));
+            GameObject newEnemy = Instantiate(objectPrefabs[wave], position, Quaternion.identity);
+            spawnedObjects.Add(newEnemy);
 
-                }
-                wave++;
-            }
+            yield return new WaitForSeconds(0.5f);
+        }
+        c = null;
+    }
 
-
-            roundFinished = true;
-
-
+    private void StartWave()
+    {
+        wave++;
+        if (wave >= objectPrefabs.Length) wave = 0;
+        if (c == null)
+        {
+            c = StartCoroutine(SpawnObject());
         }
 
+    }
+
+    public void RegisterDeath(GameObject deadObject)
+    {
+        if (spawnedObjects.Contains(deadObject))
+        {
+            spawnedObjects.Remove(deadObject);
+
+            if (spawnedObjects.Count <= 0)
+            {
+                bossScript.SetInvincible(false);
+            }
+        }
     }
 }

@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    public GameObject[] objectPrefabs;   
-    [SerializeField]
-    private Vector2 spawnerSize;
+    public GameObject[] objectPrefabs;
+    public Vector2 spawnerSize;
     [SerializeField]
     private float spawnTimeMin = 0.1f;
     [SerializeField]
@@ -16,24 +15,24 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField]
     private bool followPlayer = true;
 
-    private List<GameObject> spawnedObjects = new List<GameObject>();
-    private Coroutine c;
-    [HideInInspector]public Transform player;
+    [HideInInspector] public List<GameObject> spawnedObjects = new List<GameObject>();
+    [HideInInspector] public Coroutine c;
+    [HideInInspector] public Transform player;
 
     private void Start()
     {
         player = FindObjectOfType<chickenControl>().transform;
     }
 
-    public void ActivateSpawner()
+    public virtual void ActivateSpawner()
     {
-        if(c != null) { return; }
+        if (c != null) { return; }
         c = StartCoroutine(SpawnObject());
     }
 
-    public void DeactivateSpawner()
+    public virtual void DeactivateSpawner()
     {
-        if(c == null) { return; }
+        if (c == null) { return; }
         StopCoroutine(c);
         c = null;
     }
@@ -50,15 +49,16 @@ public class ObjectSpawner : MonoBehaviour
             if (!followPlayer)
             {
                 position = transform.position + new Vector3(Random.Range(-(spawnerSize.x / 2), spawnerSize.x / 2), 0, Random.Range(-(spawnerSize.y / 2), spawnerSize.y / 2));
-            } else
+            }
+            else
             {
                 position = new Vector3(player.position.x, transform.position.y, player.position.z);
             }
 
-            
+
             spawnedObjects.Add(Instantiate(fruit, position, Quaternion.identity));
 
-            if(spawnedObjects.Count >= maxCount)
+            if (spawnedObjects.Count >= maxCount)
             {
                 GameObject oldestObj = spawnedObjects[0];
                 spawnedObjects.Remove(oldestObj);
@@ -69,7 +69,7 @@ public class ObjectSpawner : MonoBehaviour
 
     public void DestroyAll()
     {
-        foreach(GameObject obj in spawnedObjects)
+        foreach (GameObject obj in spawnedObjects)
         {
             Destroy(obj);
         }

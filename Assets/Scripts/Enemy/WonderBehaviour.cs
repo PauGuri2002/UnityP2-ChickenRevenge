@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 public class WonderBehaviour : StateMachineBehaviour
 {
     Transform player;
@@ -17,10 +15,10 @@ public class WonderBehaviour : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       
+
         Execute(animator);
         CheckTriggers(animator);
-        
+
     }
 
     private void Execute(Animator animator)
@@ -41,12 +39,12 @@ public class WonderBehaviour : StateMachineBehaviour
     private void CheckTriggers(Animator animator)
     {
         bool isPlayer = isPlayerClose(player, animator.transform);
-        if (animator.gameObject.CompareTag("ShieldEnemy"))
+        if (animator.gameObject.CompareTag("ChaserEnemy"))
         {
             animator.SetBool("IsChasing", isPlayer);
             animator.SetBool("IsPatrolling", !isPlayer);
         }
-        
+
     }
     public bool isPlayerClose(Transform player, Transform enemy)
     {
@@ -54,5 +52,5 @@ public class WonderBehaviour : StateMachineBehaviour
         return Vector3.Distance(player.position, enemy.position) < detectDistance;
     }
 
-    
+
 }

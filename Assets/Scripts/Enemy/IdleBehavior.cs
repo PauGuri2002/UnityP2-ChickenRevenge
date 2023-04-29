@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class IdleBehavior : StateMachineBehaviour
 {
     Transform player;
-    float timer ;
+    float timer;
     public float waitTime = 2;
     public float detectDistance = 4;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -26,7 +24,7 @@ public class IdleBehavior : StateMachineBehaviour
     private void CheckTriggers(Animator animator)
     {
         bool isPlayer = IsPlayerClose(player, animator.transform);
-        if (animator.gameObject.CompareTag("ShieldEnemy"))
+        if (animator.gameObject.CompareTag("ChaserEnemy"))
 
         {
             animator.SetBool("IsChasing", isPlayer);
@@ -44,7 +42,7 @@ public class IdleBehavior : StateMachineBehaviour
 
     public bool IsPlayerClose(Transform player, Transform enemy)
     {
-        
+
         return Vector3.Distance(player.position, enemy.position) < detectDistance;
     }
     public bool IsTimeUp()

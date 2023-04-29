@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class PlayerHealth : AbstractHealth
 {
+    private bool godModeHealth = false; // dev tools
+
     [Header("Damage parameters")]
-    [SerializeField] private bool godModeHealth; // dev tools
     [SerializeField] private float pushForce = 10f;
     [SerializeField] private float recoverTime = 2f;
 
@@ -71,5 +72,10 @@ public class PlayerHealth : AbstractHealth
 
         chickenControl.movementEnabled = true;
         ragdollCoroutine = null;
+    }
+
+    public void ActivateGodMode()
+    {
+        godModeHealth = true;
     }
 }

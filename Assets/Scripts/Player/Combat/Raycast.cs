@@ -24,10 +24,6 @@ public class Raycast : AbstractAttack
             {
                 h.TakeDamage(Random.Range(minDamage, maxDamage), gameObject);
             }
-            else if (hitinfo.collider.gameObject.name == "Shield") 
-            {
-                Destroy(hitinfo.collider.gameObject);
-            }
         }
         else
         {

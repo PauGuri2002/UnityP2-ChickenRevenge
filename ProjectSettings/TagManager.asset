@@ -7,7 +7,7 @@ TagManager:
   - Ground
   - Hitter
   - Enemy
-  - ShieldEnemy
+  - ChaserEnemy
   layers:
   - Default
   - TransparentFX

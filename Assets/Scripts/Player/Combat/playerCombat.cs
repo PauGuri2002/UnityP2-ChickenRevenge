@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class playerCombat : MonoBehaviour
 {
-    [SerializeField] private bool godModeDamage; // dev tools
     [SerializeField] private AttackInfo[] attacks;
     private AttackInfo currentAttack;
     [SerializeField] private TextMeshProUGUI attackText;
@@ -21,7 +20,7 @@ public class playerCombat : MonoBehaviour
     {
         foreach (AttackInfo att in attacks)
         {
-            att.attackScript.InitializeAttack(att.minDamage * (godModeDamage ? 3 : 1), att.maxDamage * (godModeDamage ? 3 : 1), att.cooldown, att.staminaDrain, this);
+            att.attackScript.InitializeAttack(att.minDamage, att.maxDamage, att.cooldown, att.staminaDrain, this);
         }
 
         UpdateAttack(0);
@@ -92,5 +91,17 @@ public class playerCombat : MonoBehaviour
             }
             yield return new WaitForSeconds(1 / staminaGainPerSecond);
         }
+    }
+
+    bool godModeActive = false;
+    public void ActivateGodMode()
+    {
+        if (godModeActive) { return; }
+
+        foreach (AttackInfo att in attacks)
+        {
+            att.attackScript.InitializeAttack(att.minDamage * 3, att.maxDamage * 3);
+        }
+        godModeActive = true;
     }
 }

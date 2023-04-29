@@ -7,6 +7,7 @@ public class EnemyHealth : AbstractHealth
 
     public override void Die()
     {
+        base.Die();
         Instantiate(deathParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

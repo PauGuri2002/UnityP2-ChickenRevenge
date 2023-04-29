@@ -9,6 +9,7 @@ public class AbstractHealth : MonoBehaviour, IHealth
     private int _currentHealth;
 
     public static Action<int, HealthBar> OnHit;
+    public static Action<GameObject> OnDie;
 
     //Getters
     public int GetBaseHealth()
@@ -52,6 +53,7 @@ public class AbstractHealth : MonoBehaviour, IHealth
 
     public virtual void Die()
     {
-        Debug.Log(gameObject.name + " died");
+        OnDie?.Invoke(gameObject);
+        //Debug.Log(gameObject.name + " died");
     }
 }

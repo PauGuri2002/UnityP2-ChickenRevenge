@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class Boss : AbstractHealth
@@ -10,17 +12,27 @@ public class Boss : AbstractHealth
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private Renderer modelRenderer;
     [SerializeField] private Animator _animator;
+
+    [Header("Shielding")]
+    [SerializeField] private GameObject shield;
+    [SerializeField] private float invencibilityCooldown = 5;
+
+    private CapsuleCollider bossCollider;
     private PatrollingScript patrollingScript;
+
+    public static Action OnInvincibilityEnd;
+    public static Action OnInvincibilityStart;
 
     private void OnEnable()
     {
         patrollingScript = GetComponent<PatrollingScript>();
+        bossCollider = GetComponent<CapsuleCollider>();
         ChangeColor(Color.green);
     }
 
     public override void TakeDamage(int damage, GameObject origin)
     {
-        base.TakeDamage(currentPhase > 1 ? (int) Mathf.Round(damage / 1.5f) : damage, origin);
+        base.TakeDamage(currentPhase > 1 ? (int)Mathf.Round(damage / 1.5f) : damage, origin);
 
         if (currentPhase < phasesHealthPercent.Length && GetCurrentHealth() < phasesHealthPercent[currentPhase])
         {
@@ -31,7 +43,7 @@ public class Boss : AbstractHealth
 
     void StartPhase()
     {
-        Debug.Log(currentPhase);
+        Debug.Log("Boss phase " + (currentPhase + 1));
         switch (currentPhase)
         {
             case 0:
@@ -46,7 +58,7 @@ public class Boss : AbstractHealth
         }
     }
 
-    private void FirstPhase() 
+    private void FirstPhase()
     {
         knifeSpawner.ActivateSpawner();
         ChangeColor(Color.green);
@@ -55,13 +67,14 @@ public class Boss : AbstractHealth
 
     }
 
-    private void SecondPhase() 
+    private void SecondPhase()
     {
         knifeSpawner.DeactivateSpawner();
         knifeSpawner.DestroyAll();
         enemySpawner.ActivateSpawner();
         ChangeColor(Color.yellow);
         SetPhasePatrollingSpeed();
+        SetInvincible(true);
         _animator.SetInteger("Phase", currentPhase);
     }
 
@@ -73,7 +86,7 @@ public class Boss : AbstractHealth
         _animator.SetInteger("Phase", currentPhase);
     }
 
-    private void SetPhasePatrollingSpeed() 
+    private void SetPhasePatrollingSpeed()
     {
         patrollingScript.speed = phasesPatrollingSpeed[currentPhase];
     }
@@ -83,6 +96,7 @@ public class Boss : AbstractHealth
         knifeSpawner.DeactivateSpawner();
         enemySpawner.DeactivateSpawner();
         knifeSpawner.DestroyAll();
+        enemySpawner.DestroyAll();
         ChangeColor(Color.black);
         patrollingScript.speed = 0;
         _animator.SetBool("die", true);
@@ -91,5 +105,32 @@ public class Boss : AbstractHealth
     void ChangeColor(Color color)
     {
         modelRenderer.material.SetColor("_Color", color);
+    }
+
+    public void SetInvincible(bool isInvincible)
+    {
+        if (isInvincible)
+        {
+            shield.SetActive(true);
+            bossCollider.enabled = false;
+            patrollingScript.speed = 0;
+
+            OnInvincibilityStart?.Invoke();
+        }
+        else
+        {
+            shield.SetActive(false);
+            bossCollider.enabled = true;
+            SetPhasePatrollingSpeed();
+
+            OnInvincibilityEnd?.Invoke();
+            StartCoroutine(WaitInvincibility());
+        }
+    }
+
+    IEnumerator WaitInvincibility()
+    {
+        yield return new WaitForSeconds(invencibilityCooldown);
+        SetInvincible(true);
     }
 }

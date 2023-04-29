@@ -20,6 +20,12 @@ public class AbstractAttack : MonoBehaviour
         timeFire = cooldown;
     }
 
+    public void InitializeAttack(int _minDamage, int _maxDamage)
+    {
+        minDamage = _minDamage;
+        maxDamage = _maxDamage;
+    }
+
     public virtual void StartAttack() { }
     public virtual void PerformAttack() { }
     public virtual void EndAttack() { }

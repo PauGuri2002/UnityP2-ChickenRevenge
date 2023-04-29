@@ -667,7 +667,7 @@ MonoBehaviour:
   minDamage: 10
   maxDamage: 15
   staminaDrain: 10
-  range: 2
+  range: 5
   animator: {fileID: 5457853736291740609}
   particles: {fileID: 6356098811270752961, guid: 092cad02ea11ca944a7eecd10dbd25b9, type: 3}
 --- !u!1 &6765465592025621348
@@ -961,6 +961,34 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e65e83ee-7c65-431c-9b1c-10f1770c2217
     m_ActionName: Player/PickUp[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5457853735503463894}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+        m_MethodName: ActivateGodMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8813540242839300041}
+        m_TargetAssemblyTypeName: playerCombat, Assembly-CSharp
+        m_MethodName: ActivateGodMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4b73441b-1929-426e-8e4f-b99e1ad33d60
+    m_ActionName: Player/GodMode[/Keyboard/g]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard+Mouse
   m_DefaultActionMap: Player
