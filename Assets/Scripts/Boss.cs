@@ -16,6 +16,7 @@ public class Boss : AbstractHealth
     [Header("Shielding")]
     [SerializeField] private GameObject shield;
     [SerializeField] private float invencibilityCooldown = 5;
+    private Coroutine waitCoroutine;
 
     private CapsuleCollider bossCollider;
     private PatrollingScript patrollingScript;
@@ -83,12 +84,20 @@ public class Boss : AbstractHealth
         knifeSpawner.ActivateSpawner();
         ChangeColor(Color.red);
         SetPhasePatrollingSpeed();
+
+        if (waitCoroutine != null)
+        {
+            StopCoroutine(waitCoroutine);
+        }
+        SetInvincible(true);
+
         _animator.SetInteger("Phase", currentPhase);
     }
 
     private void SetPhasePatrollingSpeed()
     {
-        patrollingScript.speed = phasesPatrollingSpeed[currentPhase];
+        int index = currentPhase < phasesPatrollingSpeed.Length ? currentPhase : phasesPatrollingSpeed.Length - 1;
+        patrollingScript.speed = phasesPatrollingSpeed[index];
     }
 
     public override void Die()
@@ -99,7 +108,14 @@ public class Boss : AbstractHealth
         enemySpawner.DestroyAll();
         ChangeColor(Color.black);
         patrollingScript.speed = 0;
+
+        if (waitCoroutine != null)
+        {
+            StopCoroutine(waitCoroutine);
+        }
+
         _animator.SetBool("die", true);
+        base.Die();
     }
 
     void ChangeColor(Color color)
@@ -124,7 +140,7 @@ public class Boss : AbstractHealth
             SetPhasePatrollingSpeed();
 
             OnInvincibilityEnd?.Invoke();
-            StartCoroutine(WaitInvincibility());
+            waitCoroutine = StartCoroutine(WaitInvincibility());
         }
     }
 
@@ -132,5 +148,6 @@ public class Boss : AbstractHealth
     {
         yield return new WaitForSeconds(invencibilityCooldown);
         SetInvincible(true);
+        waitCoroutine = null;
     }
 }

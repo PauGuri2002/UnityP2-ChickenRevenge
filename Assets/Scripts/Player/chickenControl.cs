@@ -47,6 +47,15 @@ public class chickenControl : MonoBehaviour
         speed = walkSpeed;
     }
 
+    private void OnEnable()
+    {
+        AbstractHealth.OnDie += RegisterBossDeath;
+    }
+    private void OnDisable()
+    {
+        AbstractHealth.OnDie -= RegisterBossDeath;
+    }
+
     void Update()
     {
         Movement();
@@ -173,5 +182,14 @@ public class chickenControl : MonoBehaviour
     {
         rotationChicken = newRotation;
         modelKFC.transform.rotation = Quaternion.LookRotation(horizontalMove) * Quaternion.Euler(0, rotationChicken, 0);
+    }
+
+    public void RegisterBossDeath(GameObject deadObject)
+    {
+        if (deadObject.GetComponent<Boss>() != null)
+        {
+            _playerAnimator.SetTrigger("twerking");
+            movementEnabled = false;
+        }
     }
 }

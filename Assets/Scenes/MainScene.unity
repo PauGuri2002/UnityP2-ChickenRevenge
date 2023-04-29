@@ -254,6 +254,7 @@ MonoBehaviour:
   objectPrefabs:
   - {fileID: 7799034839344931199, guid: 27159253f5a884545ae54c0506f89bd2, type: 3}
   spawnerSize: {x: 41.24, y: 79.5}
+  spawnerHeight: 21.3
   spawnTimeMin: 0.5
   spawnTimeMax: 1
   maxCount: 5
@@ -268,7 +269,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450980885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 14.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -290,7 +291,8 @@ MonoBehaviour:
   objectPrefabs:
   - {fileID: 1998942852648348, guid: f0c66ffbe2165584e85d6087173c1c49, type: 3}
   - {fileID: 7887794087420574048, guid: 3b5fbcd540f0e574383e0826183becf2, type: 3}
-  spawnerSize: {x: 0, y: 0}
+  spawnerSize: {x: 41.24, y: 79.5}
+  spawnerHeight: 3
   spawnTimeMin: 0.1
   spawnTimeMax: 0.5
   maxCount: 20
@@ -842,7 +844,7 @@ MonoBehaviour:
   _healthBar: {fileID: 1381259539}
   _baseHealth: 200
   _minHealth: 0
-  phasesHealthPercent: c80000007800000032000000
+  phasesHealthPercent: c80000009600000046000000
   phasesPatrollingSpeed:
   - 10
   - 20
@@ -852,7 +854,7 @@ MonoBehaviour:
   modelRenderer: {fileID: 1248695363}
   _animator: {fileID: 634303639}
   shield: {fileID: 118544406}
-  invencibilityCooldown: 15
+  invencibilityCooldown: 10
 --- !u!136 &634303634
 CapsuleCollider:
   m_ObjectHideFlags: 0

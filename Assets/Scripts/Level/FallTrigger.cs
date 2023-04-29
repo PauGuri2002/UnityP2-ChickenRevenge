@@ -14,9 +14,9 @@ public class FallTrigger : MonoBehaviour
 
             other.GetComponent<IHealth>().TakeDamage(10, null);
         }
-        if (other.GetComponent<Animator>() != null && other.CompareTag("Enemy"))
+        if (other.GetComponent<Animator>() != null && (other.CompareTag("Enemy") || other.CompareTag("ChaserEnemy")))
         {
-            Destroy(other.gameObject);
+            other.GetComponent<IHealth>().TakeDamage(9999, null);
         }
     }
 }

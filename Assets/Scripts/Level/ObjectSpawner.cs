@@ -6,6 +6,7 @@ public class ObjectSpawner : MonoBehaviour
 {
     public GameObject[] objectPrefabs;
     public Vector2 spawnerSize;
+    public float spawnerHeight;
     [SerializeField]
     private float spawnTimeMin = 0.1f;
     [SerializeField]
@@ -48,11 +49,11 @@ public class ObjectSpawner : MonoBehaviour
             Vector3 position;
             if (!followPlayer)
             {
-                position = transform.position + new Vector3(Random.Range(-(spawnerSize.x / 2), spawnerSize.x / 2), 0, Random.Range(-(spawnerSize.y / 2), spawnerSize.y / 2));
+                position = new Vector3(transform.position.x, spawnerHeight, transform.position.z) + new Vector3(Random.Range(-(spawnerSize.x / 2), spawnerSize.x / 2), 0, Random.Range(-(spawnerSize.y / 2), spawnerSize.y / 2));
             }
             else
             {
-                position = new Vector3(player.position.x, transform.position.y, player.position.z);
+                position = new Vector3(player.position.x, spawnerHeight, player.position.z);
             }
 
 
@@ -78,6 +79,6 @@ public class ObjectSpawner : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position, new Vector3(spawnerSize.x, 0, spawnerSize.y));
+        Gizmos.DrawWireCube(new Vector3(transform.position.x, spawnerHeight, transform.position.z), new Vector3(spawnerSize.x, 0, spawnerSize.y));
     }
 }
