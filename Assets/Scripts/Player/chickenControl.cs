@@ -34,7 +34,6 @@ public class chickenControl : MonoBehaviour
     [Header("Player Animator")]
     [SerializeField] public Animator _playerAnimator;
 
-
     [Header("Player Rotation")]
     [HideInInspector] public float rotationChicken = 0f;
 
@@ -46,7 +45,6 @@ public class chickenControl : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         speed = walkSpeed;
-
     }
 
     void Update()
@@ -159,7 +157,7 @@ public class chickenControl : MonoBehaviour
         Vector3 hvMove = new Vector3(horizontalMove.x * speed, verticalMove, horizontalMove.z * speed);
         characterController.Move((hvMove * dashPlayerControll + externalForces) * Time.deltaTime);
 
-        if (horizontalMove.magnitude > 0) 
+        if (horizontalMove.magnitude > 0)
         {
             UpdateRotation(rotationChicken);
         }

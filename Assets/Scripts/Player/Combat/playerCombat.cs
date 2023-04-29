@@ -93,15 +93,11 @@ public class playerCombat : MonoBehaviour
         }
     }
 
-    bool godModeActive = false;
     public void ActivateGodMode()
     {
-        if (godModeActive) { return; }
-
         foreach (AttackInfo att in attacks)
         {
             att.attackScript.InitializeAttack(att.minDamage * 3, att.maxDamage * 3);
         }
-        godModeActive = true;
     }
 }

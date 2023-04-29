@@ -4261,6 +4261,10 @@ PrefabInstance:
       propertyPath: _healthBar
       value: 
       objectReference: {fileID: 743359439}
+    - target: {fileID: 6138014639452302669, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
+      propertyPath: godModeText
+      value: 
+      objectReference: {fileID: 863177933}
     - target: {fileID: 6282903418717495729, guid: be67e05f8c7c90b44b1d734f137e1efd, type: 3}
       propertyPath: cam
       value: 

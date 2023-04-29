@@ -780,6 +780,7 @@ GameObject:
   - component: {fileID: 6282903418717495729}
   - component: {fileID: 5457853735503463894}
   - component: {fileID: 8813540242839300041}
+  - component: {fileID: 6138014639452302669}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -963,20 +964,8 @@ MonoBehaviour:
     m_ActionName: Player/PickUp[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5457853735503463894}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: ActivateGodMode
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8813540242839300041}
-        m_TargetAssemblyTypeName: playerCombat, Assembly-CSharp
+      - m_Target: {fileID: 6138014639452302669}
+        m_TargetAssemblyTypeName: PlayerGodMode, Assembly-CSharp
         m_MethodName: ActivateGodMode
         m_Mode: 1
         m_Arguments:
@@ -1067,7 +1056,6 @@ MonoBehaviour:
   _healthBar: {fileID: 0}
   _baseHealth: 100
   _minHealth: 0
-  godModeHealth: 0
   pushForce: 50
   recoverTime: 0.1
 --- !u!114 &8813540242839300041
@@ -1082,7 +1070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5923e917a846fa04ca5a5c592a438bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  godModeDamage: 0
   attacks:
   - name: Laser Shot
     attackType: 1
@@ -1117,6 +1104,19 @@ MonoBehaviour:
   staminaGainPerSecond: 50
   staminaBar: {fileID: 0}
   currentStamina: 0
+--- !u!114 &6138014639452302669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7565839162051440814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 376bcc7975a98d3489bd266a083cd84e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  godModeParticles: {fileID: 1619094963599625236, guid: d7fe16313e18bdf42906791fc6244036, type: 3}
 --- !u!1 &7887882441691795610
 GameObject:
   m_ObjectHideFlags: 0
