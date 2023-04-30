@@ -12,10 +12,12 @@ public class PatrollingScript : MonoBehaviour
     private bool isReturning;
     private Quaternion ogRotation;
     private Vector3 currentTargetPosition => wayPoints[currentWayPoint].position;
-
+    private Vector3 diff;
     private void Start()
     {
         ogRotation = transform.rotation;
+        diff =   wayPoints[0].position - transform.position;
+
     }
     // Update is called once per frame
     void Update()
@@ -24,6 +26,7 @@ public class PatrollingScript : MonoBehaviour
         {
             ChangeWayPoint();
         }
+
         CheckRb();
         Move();
     }
@@ -39,7 +42,8 @@ public class PatrollingScript : MonoBehaviour
     //Checkea si está cerca o encima del wayPoint
     private bool ReachedWayPoint()
     {
-        return Vector3.Distance(transform.position, currentTargetPosition) <= minDistance;
+        Debug.Log(Vector2.Distance(new Vector2(transform.position.x,transform.position.z), new Vector2(currentTargetPosition.x,currentTargetPosition.z)) <= minDistance);
+        return Vector3.Distance(new Vector3(transform.position.x, currentTargetPosition.y, transform.position.z), currentTargetPosition) <= minDistance;
     }
 
     //Cambia al siguiete wayPoint
@@ -52,7 +56,7 @@ public class PatrollingScript : MonoBehaviour
             {
                 isReturning = false;
             }
-
+            diff = currentTargetPosition - transform.position;
         }
         else
         {
@@ -62,12 +66,15 @@ public class PatrollingScript : MonoBehaviour
                 isReturning = true;
             }
             //currentWayPoint = currentWayPoint % wayPoints[Length]; para bucle
+            diff = currentTargetPosition - transform.position;
+
         }
     }
     private void Move()
     {
-        transform.LookAt(new Vector3 (currentTargetPosition.x, transform.position.y, currentTargetPosition.z));
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        Vector3 goTo = new Vector3(diff.x, 0,diff.z);
+        //transform.LookAt(new Vector3(currentTargetPosition.x, transform.position.y, currentTargetPosition.z));
+        transform.Translate(goTo.normalized * speed * Time.deltaTime);
 
 
     }
