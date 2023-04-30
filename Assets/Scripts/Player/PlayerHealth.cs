@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : AbstractHealth
 {
@@ -8,20 +9,16 @@ public class PlayerHealth : AbstractHealth
     [Header("Damage parameters")]
     [SerializeField] private float pushForce = 10f;
     [SerializeField] private float recoverTime = 2f;
-
-    private Vector3 respawnPos;
-
-    private CharacterController characterController;
+    [SerializeField] private GameObject deadText;
     private chickenControl chickenControl;
 
     private void Start()
     {
         base.SetBaseHealth();
-        characterController = GetComponent<CharacterController>();
         chickenControl = GetComponent<chickenControl>();
 
         chickenControl.externalForces = Vector3.zero;
-        respawnPos = transform.position;
+        deadText.SetActive(false);
     }
 
     // DAMAGE & DEATH //
@@ -44,13 +41,21 @@ public class PlayerHealth : AbstractHealth
 
     public override void Die()
     {
-
-        Animator playerAnimator = GetComponent<chickenControl>()._playerAnimator;
+        Animator playerAnimator = chickenControl._playerAnimator;
 
         playerAnimator.SetBool("die", true);
-        characterController.enabled = false;
-        transform.position = respawnPos;
-        characterController.enabled = true;
+        chickenControl.movementEnabled = false;
+        deadText.SetActive(true);
+
+        if (ragdollCoroutine != null)
+        {
+            StopCoroutine(ragdollCoroutine);
+        }
+        Invoke("ReloadScene", 5f);
+    }
+    void ReloadScene()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 
     public void GetHit(Vector3 hitForce)
