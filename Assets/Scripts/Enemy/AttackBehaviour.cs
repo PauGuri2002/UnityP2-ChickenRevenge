@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackBehaviour : StateMachineBehaviour
@@ -22,7 +20,7 @@ public class AttackBehaviour : StateMachineBehaviour
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       // SetDirection(animator);
+        // SetDirection(animator);
         Execute(animator);
         CheckTriggers(animator);
 
@@ -30,9 +28,18 @@ public class AttackBehaviour : StateMachineBehaviour
     private void Execute(Animator animator)
     {
 
-
     }
-    
+
+    public override void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (animator)
+        {
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0.3f);
+            animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0.3f);
+
+            animator.SetIKPosition(AvatarIKGoal.LeftHand, player.position);
+        }
+    }
 
     private void CheckTriggers(Animator animator)
     {
@@ -44,7 +51,7 @@ public class AttackBehaviour : StateMachineBehaviour
 
         return Vector3.Distance(player.position, enemy.position) < detectDistance;
     }
-    
 
-   
+
+
 }
