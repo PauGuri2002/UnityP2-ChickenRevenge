@@ -49,7 +49,7 @@ public class WonderBehaviour : StateMachineBehaviour
     public bool isPlayerClose(Transform player, Transform enemy)
     {
 
-        return Vector3.Distance(player.position, enemy.position) < detectDistance;
+        return Vector3.Distance(player.position, enemy.position) <= detectDistance;
     }
 
 

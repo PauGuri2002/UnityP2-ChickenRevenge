@@ -58,7 +58,7 @@ public class AttackDetectionScript : MonoBehaviour
                 {
                     mano.GetComponent<BoxCollider>().enabled = true;
                     animator.SetBool("IsChasing",true);
-                    difference = transform.position - player.position;
+                    difference = player.position - transform.position ;
                     transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
                     Cc.Move(new Vector3(difference.x * speed * Time.deltaTime, -9.8f, difference.z * speed * Time.deltaTime));
 
@@ -69,7 +69,7 @@ public class AttackDetectionScript : MonoBehaviour
         {
             difference = player.position - transform.position  ;
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
-            Cc.Move(new Vector3(difference.x * (speed / 10) * Time.deltaTime, -9.8f, difference.z * speed * Time.deltaTime));
+            Cc.Move(new Vector3(difference.x * (speed / 10) * Time.deltaTime, -9.8f, difference.z * (speed / 10) * Time.deltaTime));
             
         }
         

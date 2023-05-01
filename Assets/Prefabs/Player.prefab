@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 5491163874372936567}
   - component: {fileID: 5457853736291740609}
   m_Layer: 0
-  m_Name: chicken_player_v03
+  m_Name: ChickenModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -644,7 +644,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5871414161208954817}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.19, z: 3.37}
+  m_LocalPosition: {x: 0, y: -2.15, z: 3.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1058,6 +1058,7 @@ MonoBehaviour:
   _minHealth: 0
   pushForce: 50
   recoverTime: 0.1
+  deadText: {fileID: 0}
 --- !u!114 &8813540242839300041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1088,15 +1089,15 @@ MonoBehaviour:
   - name: Melee
     attackType: 0
     attackScript: {fileID: 63178779112840565}
-    minDamage: 5
-    maxDamage: 8
+    minDamage: 10
+    maxDamage: 20
     cooldown: 0.5
     staminaDrain: 50
   - name: Heavy Melee
     attackType: 0
     attackScript: {fileID: 3821010112541894085}
-    minDamage: 10
-    maxDamage: 15
+    minDamage: 20
+    maxDamage: 30
     cooldown: 1.5
     staminaDrain: 100
   attackText: {fileID: 0}
@@ -1117,6 +1118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godModeParticles: {fileID: 1619094963599625236, guid: d7fe16313e18bdf42906791fc6244036, type: 3}
+  godModeText: {fileID: 0}
 --- !u!1 &7887882441691795610
 GameObject:
   m_ObjectHideFlags: 0
